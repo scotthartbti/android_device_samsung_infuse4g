@@ -36,8 +36,8 @@ TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
 TARGET_PROVIDES_INIT := true
-TARGET_PROVIDES_INIT_TARGET_RC := true
-TARGET_BOARD_PLATFORM := s5pv210
+#TARGET_PROVIDES_INIT_TARGET_RC := true
+TARGET_BOARD_PLATFORM := s5pc110
 TARGET_BOOTLOADER_BOARD_NAME := aries
 TARGET_RECOVERY_INITRC := device/samsung/infuse4g/recovery.rc
 
@@ -48,10 +48,10 @@ TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/samsung/infuse4g/releaseto
 TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/samsung/infuse4g/releasetools/infuse4g_img_from_target_files
 
 # Camera
-USE_CAMERA_STUB := false
-ifeq ($(USE_CAMERA_STUB),false)
-BOARD_CAMERA_LIBRARIES := libcamera
-endif
+#USE_CAMERA_STUB := false
+#ifeq ($(USE_CAMERA_STUB),false)
+#BOARD_CAMERA_LIBRARIES := libcamera
+#endif
 
 # TARGET_PROVIDES_LIBAUDIO := true
 
@@ -62,7 +62,7 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/samsung/infuse4g/vibrator/tspdrv.c
 
 # Video Devices
-BOARD_USES_OVERLAY := true
+#BOARD_USES_OVERLAY := true
 BOARD_V4L2_DEVICE := /dev/video1
 BOARD_CAMERA_DEVICE := /dev/video0
 BOARD_SECOND_CAMERA_DEVICE := /dev/video2
@@ -83,8 +83,8 @@ WPA_SUPPLICANT_VERSION := VER_0_6_X
 BOARD_WPA_SUPPLICANT_DRIVER := WEXT
 BOARD_WLAN_DEVICE := bcm4330
 WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/dhd.ko"
-WIFI_DRIVER_FW_STA_PATH     := "/vendor/firmware/bcm4330_sta.bin"
-WIFI_DRIVER_FW_AP_PATH      := "/vendor/firmware/bcm4330_sta.bin"
+WIFI_DRIVER_FW_PATH_STA     := "/vendor/firmware/bcm4330_sta.bin"
+WIFI_DRIVER_FW_PATH_AP      := "/vendor/firmware/bcm4330_sta.bin"
 WIFI_DRIVER_MODULE_NAME     :=  "dhd"
 WIFI_DRIVER_MODULE_ARG      :=  "firmware_path=/vendor/firmware/bcm4330_sta.bin nvram_path=/vendor/firmware/nvram_net.txt"
 
@@ -96,6 +96,11 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_CUSTOM_BOOTIMG_MK := device/samsung/infuse4g/shbootimg.mk
 TARGET_RECOVERY_PRE_COMMAND := "echo 1 > /cache/.startrecovery; sync;"
+BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/aries-common/recovery/graphics.c
+
+# legacy gfx/ts support
+COMMON_GLOBAL_CFLAGS += -DMISSING_EGL_EXTERNAL_IMAGE -DMISSING_EGL_PIXEL_FORMAT_YV12 -DMISSING_GRALLOC_BUFFERS
+BOARD_USE_LEGACY_TOUCHSCREEN := true
 
 # Include aries specific stuff
 -include device/samsung/aries-common/Android.mk

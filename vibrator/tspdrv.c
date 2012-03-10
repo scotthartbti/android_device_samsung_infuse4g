@@ -103,3 +103,15 @@ int sendit(int timeout_ms)
 
     return (ret == nwr) ? 0 : -1;
 }
+
+int vibrator_exists()
+{
+    int fd;
+
+    fd = open(THE_DEVICE, O_RDWR);
+    if(fd < 0)
+        return 0;
+    close(fd);
+    return 1;
+}
+

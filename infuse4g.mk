@@ -38,21 +38,21 @@
 # These is the hardware-specific overlay, which points to the location
 # of hardware-specific resource overrides, typically the frameworks and
 # application settings that are stored in resourced.
-DEVICE_PACKAGE_OVERLAYS := device/samsung/aries-common/overlay
+DEVICE_PACKAGE_OVERLAYS := device/samsung/infuse4g/overlay
 
 # These are the hardware-specific configuration files
 PRODUCT_COPY_FILES := \
 	device/samsung/infuse4g/asound.conf:system/etc/asound.conf \
 	device/samsung/infuse4g/vold.fstab:system/etc/vold.fstab \
-	device/samsung/infuse4g/egl.cfg:system/lib/egl/egl.cfg
+	device/samsung/infuse4g/egl.cfg:system/lib/egl/egl.cfg \
+	device/samsung/infuse4g/qt602240_ts_input.idc:system/usr/idc/qt602240_ts_input.idc \
+	device/samsung/aries-common/main.conf:system/etc/bluetooth/main.conf
 
 # Init files
 PRODUCT_COPY_FILES += \
-	device/samsung/infuse4g/init.rc:root/init.rc \
 	device/samsung/infuse4g/init.aries.rc:root/init.aries.rc \
 	device/samsung/infuse4g/ueventd.aries.rc:root/ueventd.aries.rc \
-	device/samsung/aries-common/lpm.rc:root/lpm.rc \
-	device/samsung/infuse4g/setupenv.sh:recovery/root/sbin/setupenv.sh
+	device/samsung/aries-common/lpm.rc:root/lpm.rc
 
 # Prebuilt kl keymaps
 PRODUCT_COPY_FILES += \
@@ -72,44 +72,45 @@ PRODUCT_COPY_FILES += \
 	device/samsung/infuse4g/keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin
 
 # Filesystem management tools
-PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES := \
 	make_ext4fs \
 	setup_fs
 
 # These are the OpenMAX IL configuration files
-PRODUCT_COPY_FILES += \
-	device/samsung/aries-common/sec_mm/sec_omx/sec_omx_core/secomxregistry:system/etc/secomxregistry \
-	device/samsung/aries-common/media_profiles.xml:system/etc/media_profiles.xml
+#PRODUCT_COPY_FILES += \
+#	device/samsung/aries-common/sec_mm/sec_omx/sec_omx_core/secomxregistry:system/etc/secomxregistry \
+#	device/samsung/aries-common/media_profiles.xml:system/etc/media_profiles.xml
 
 # These are the OpenMAX IL modules
-PRODUCT_PACKAGES += \
- 	libSEC_OMX_Core.aries \
-	libOMX.SEC.AVC.Decoder.aries \
- 	libOMX.SEC.M4V.Decoder.aries \
-	libOMX.SEC.M4V.Encoder.aries \
-	libOMX.SEC.AVC.Encoder.aries
+#PRODUCT_PACKAGES += \
+# 	libSEC_OMX_Core.aries \
+#	libOMX.SEC.AVC.Decoder.aries \
+# 	libOMX.SEC.M4V.Decoder.aries \
+#	libOMX.SEC.M4V.Encoder.aries \
+#	libOMX.SEC.AVC.Encoder.aries
 
 PRODUCT_PACKAGES += \
-	lights.aries \
-	overlay.aries
+	audio.primary.aries \
+	audio_policy.aries \
+	audio.a2dp.default \
+	lights.aries
 
 # Libs
-PRODUCT_PACKAGES += \
-	libcamera \
-	libstagefrighthw
+#PRODUCT_PACKAGES += \
+#	libstagefrighthw
 
 # apns config file
 PRODUCT_COPY_FILES += \
-    vendor/cyanogen/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml
+    development/data/etc/apns-conf.xml:system/etc/apns-conf.xml
 
 # Bluetooth MAC Address
 PRODUCT_PACKAGES += \
 	bdaddr_read
 
 # Service Mode Secret Code
-PRODUCT_PACKAGES += \
-    SamsungServiceMode \
-    AriesParts
+#PRODUCT_PACKAGES += \
+#    SamsungServiceMode \
+#    AriesParts
 
 # wpa_supplicant
 PRODUCT_COPY_FILES += \
@@ -121,7 +122,7 @@ PRODUCT_COPY_FILES += \
 	frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
 	frameworks/base/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
 	frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/base/data/etc/android.hardware.location.xml:system/etc/permissions/android.hardware.location.xml \
+	frameworks/base/data/etc/android.hardware.location.xml:system/etc/permissions/android.hardware.location.xml \
 	frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
 	frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
 	frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
@@ -141,9 +142,9 @@ PRODUCT_PROPERTY_OVERRIDES := \
 PRODUCT_PROPERTY_OVERRIDES += \
        wifi.interface=eth0 \
        wifi.supplicant_scan_interval=20 \
-       ro.telephony.ril_class=samsung \
+       ro.telephony.ril_class=SamsungRIL \
+       ro.telephony.ril.v3=icccardstatus,datacall,signalstrength,facilitylock \
        mobiledata.interfaces=pdp0,eth0,gprs,ppp0 \
-       dalvik.vm.heapsize=48m \
        persist.sys.vold.switchexternal=1
     
 # enable Google-specific location features,
@@ -159,6 +160,20 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.kernel.android.checkjni=0 \
     dalvik.vm.checkjni=false
+
+# Override /proc/sys/vm/dirty_ratio on UMS
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vold.umsdirtyratio=20
+
+# We have sacrificed /cache for a larger /system, so it's not large enough for dalvik cache
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.dexopt-data-only=1
+
+# Set default USB interface
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=mass_storage
+
+include frameworks/base/build/phone-hdpi-512-dalvik-heap.mk
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
@@ -194,9 +209,9 @@ PRODUCT_COPY_FILES += \
     device/samsung/infuse4g/modules/ansi_cprng.ko:system/lib/modules/ansi_cprng.ko \
     device/samsung/infuse4g/modules/vibrator.ko:system/lib/modules/vibrator.ko
 
-PRODUCT_COPY_FILES += \
-	device/samsung/infuse4g/hciattach:system/bin/hciattach \
-	device/samsung/infuse4g/brcm_patchram_plus:system/bin/brcm_patchram_plus
+#PRODUCT_COPY_FILES += \
+#	device/samsung/infuse4g/hciattach:system/bin/hciattach \
+#	device/samsung/infuse4g/brcm_patchram_plus:system/bin/brcm_patchram_plus
 
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
