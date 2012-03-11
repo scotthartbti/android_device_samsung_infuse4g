@@ -350,10 +350,11 @@ service hciattach /system/bin/logwrapper /system/bin/hciattach /dev/s3c2410_seri
 #    group graphics
 
 # +STE UART Contol Application
-#service ste-cg29xx_ctrl /system/vendor/bin/ste-cg29xx_ctrl -b 115200 /dev/s3c2410_serial1
-#     user system
-#     group system misc 
-#     oneshot
+service ste-cg29xx_ctrl /system/vendor/bin/ste-cg29xx_ctrl -b 115200 /dev/s3c2410_serial1
+     class main
+     user system
+     group system misc 
+     oneshot
 
 # +STE GPS Daemon
 #GPS_CHIPSET_STE_CG2900
