@@ -98,9 +98,14 @@ BOARD_CUSTOM_BOOTIMG_MK := device/samsung/infuse4g/shbootimg.mk
 TARGET_RECOVERY_PRE_COMMAND := "echo 1 > /cache/.startrecovery; sync;"
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/aries-common/recovery/graphics.c
 
-# legacy gfx/ts support
-COMMON_GLOBAL_CFLAGS += -DMISSING_EGL_EXTERNAL_IMAGE -DMISSING_EGL_PIXEL_FORMAT_YV12 -DMISSING_GRALLOC_BUFFERS
+# legacy ts support
 BOARD_USE_LEGACY_TOUCHSCREEN := true
+
+# Hardware rendering
+USE_OPENGL_RENDERER := true
+
+# skia
+BOARD_USE_SKIA_LCDTEXT := true
 
 # Include aries specific stuff
 -include device/samsung/aries-common/Android.mk

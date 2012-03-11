@@ -1,3 +1,5 @@
+import init.aries.usb.rc
+
 on init
     loglevel 9
     export EXTERNAL_STORAGE /mnt/sdcard
@@ -296,6 +298,10 @@ on post-fs-data
     mkdir /data/gps 770 gps system
     chown system system /data/gps
     chown radio system /sys/class/power_supply/battery/gps
+
+# cheatin
+on property:ro.debuggable=1
+    start adbd
 
     setprop vold.post_fs_data_done 1
 
