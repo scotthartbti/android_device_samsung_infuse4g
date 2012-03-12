@@ -51,6 +51,8 @@ PRODUCT_COPY_FILES := \
 # Init files
 PRODUCT_COPY_FILES += \
 	device/samsung/infuse4g/init.aries.rc:root/init.aries.rc \
+	device/samsung/infuse4g/init.aries.usb.rc:root/init.aries.usb.rc \
+	device/samsung/infuse4g/init.aries.usb.rc:recovery/root/usb.rc \
 	device/samsung/infuse4g/ueventd.aries.rc:root/ueventd.aries.rc \
 	device/samsung/aries-common/lpm.rc:root/lpm.rc
 

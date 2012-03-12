@@ -214,7 +214,7 @@ on boot
     chown system system /sys/class/timed_output/vibrator/enable
 
 on fs
-    mount ext4 /dev/block/stl9 /system ro remount
+    mount ext4 /dev/block/stl9 /system
     mount ext4 /dev/block/stl11 /cache nosuid nodev noatime nodiratime noauto_da_alloc
     mount ext4 /dev/block/mmcblk0p2 /data wait nosuid noatime nodiratime noauto_da_alloc
     mount ext4 /dev/block/stl10 /datadata nosuid nodev nodiratime noauto_da_alloc
