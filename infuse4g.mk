@@ -42,10 +42,10 @@ DEVICE_PACKAGE_OVERLAYS := device/samsung/infuse4g/overlay
 
 # These are the hardware-specific configuration files
 PRODUCT_COPY_FILES := \
-	device/samsung/infuse4g/asound.conf:system/etc/asound.conf \
-	device/samsung/infuse4g/vold.fstab:system/etc/vold.fstab \
-	device/samsung/infuse4g/egl.cfg:system/lib/egl/egl.cfg \
-	device/samsung/infuse4g/qt602240_ts_input.idc:system/usr/idc/qt602240_ts_input.idc \
+	device/samsung/infuse4g/prebuilt/etc/asound.conf:system/etc/asound.conf \
+	device/samsung/infuse4g/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
+	device/samsung/infuse4g/prebuilt/lib/egl/egl.cfg:system/lib/egl/egl.cfg \
+	device/samsung/infuse4g/prebuilt/usr/idc/qt602240_ts_input.idc:system/usr/idc/qt602240_ts_input.idc \
 	device/samsung/aries-common/main.conf:system/etc/bluetooth/main.conf
 
 # Init files
@@ -58,20 +58,20 @@ PRODUCT_COPY_FILES += \
 
 # Prebuilt kl keymaps
 PRODUCT_COPY_FILES += \
-	device/samsung/infuse4g/keylayout/aries-keypad.kl:system/usr/keylayout/aries-keypad.kl \
-	device/samsung/infuse4g/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
-	device/samsung/infuse4g/keylayout/Broadcom_Bluetooth_HID.kl:system/usr/keylayout/Broadcom_Bluetooth_HID.kl \
-	device/samsung/infuse4g/keylayout/melfas_touchkey.kl:system/usr/keylayout/melfas_touchkey.kl \
-	device/samsung/infuse4g/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
-	device/samsung/infuse4g/keylayout/sec_jack.kl:system/usr/keylayout/sec_jack.kl
+	device/samsung/infuse4g/prebuilt/usr/keylayout/aries-keypad.kl:system/usr/keylayout/aries-keypad.kl \
+	device/samsung/infuse4g/prebuilt/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
+	device/samsung/infuse4g/prebuilt/usr/keylayout/Broadcom_Bluetooth_HID.kl:system/usr/keylayout/Broadcom_Bluetooth_HID.kl \
+	device/samsung/infuse4g/prebuilt/usr/keylayout/melfas_touchkey.kl:system/usr/keylayout/melfas_touchkey.kl \
+	device/samsung/infuse4g/prebuilt/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
+	device/samsung/infuse4g/prebuilt/usr/keylayout/sec_jack.kl:system/usr/keylayout/sec_jack.kl
 
 # Prebuilt kcm keymaps
 PRODUCT_COPY_FILES += \
-	device/samsung/infuse4g/keychars/aries-keypad.kcm.bin:system/usr/keychars/aries-keypad.kcm.bin \
-	device/samsung/infuse4g/keychars/Broadcom_Bluetooth_HID.kcm.bin:system/usr/keychars/Broadcom_Bluetooth_HID.kcm.bin \
-	device/samsung/infuse4g/keychars/melfas_touchkey.kcm.bin:system/usr/keychars/melfas_touchkey.kcm.bin \
-	device/samsung/infuse4g/keychars/qwerty.kcm.bin:system/usr/keychars/qwerty.kcm.bin \
-	device/samsung/infuse4g/keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin
+	device/samsung/infuse4g/prebuilt/usr/keychars/aries-keypad.kcm.bin:system/usr/keychars/aries-keypad.kcm.bin \
+	device/samsung/infuse4g/prebuilt/usr/keychars/Broadcom_Bluetooth_HID.kcm.bin:system/usr/keychars/Broadcom_Bluetooth_HID.kcm.bin \
+	device/samsung/infuse4g/prebuilt/usr/keychars/melfas_touchkey.kcm.bin:system/usr/keychars/melfas_touchkey.kcm.bin \
+	device/samsung/infuse4g/prebuilt/usr/keychars/qwerty.kcm.bin:system/usr/keychars/qwerty.kcm.bin \
+	device/samsung/infuse4g/prebuilt/usr/keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin
 
 # Filesystem management tools
 PRODUCT_PACKAGES := \
@@ -113,10 +113,6 @@ PRODUCT_PACKAGES += \
 #PRODUCT_PACKAGES += \
 #    SamsungServiceMode \
 #    AriesParts
-
-# wpa_supplicant
-PRODUCT_COPY_FILES += \
-	device/samsung/infuse4g/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -212,8 +208,8 @@ PRODUCT_COPY_FILES += \
     device/samsung/infuse4g/modules/vibrator.ko:system/lib/modules/vibrator.ko
 
 #PRODUCT_COPY_FILES += \
-#	device/samsung/infuse4g/hciattach:system/bin/hciattach \
-#	device/samsung/infuse4g/brcm_patchram_plus:system/bin/brcm_patchram_plus
+#	device/samsung/infuse4g/prebuilt/bin/hciattach:system/bin/hciattach \
+#	device/samsung/infuse4g/prebuilt/bin/brcm_patchram_plus:system/bin/brcm_patchram_plus
 
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
