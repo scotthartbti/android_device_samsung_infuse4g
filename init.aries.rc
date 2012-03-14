@@ -1,6 +1,7 @@
 import init.aries.usb.rc
 
 on init
+
     loglevel 9
     export EXTERNAL_STORAGE /mnt/sdcard
     export SECONDARY_STORAGE /mnt/emmc
@@ -10,23 +11,21 @@ on init
     mkdir /mnt/sdcard 0000 system system
     symlink /mnt/sdcard /sdcard
 
+    insmod /lib/modules/fsr.ko
+    insmod /lib/modules/fsr_stl.ko
+    insmod /lib/modules/rfs_glue.ko
+    insmod /lib/modules/rfs_fat.ko
+    insmod /lib/modules/j4fs.ko
+    insmod /lib/modules/storage.ko
+
+    mkdir /mnt/.lfs 0755 root root
+    mount j4fs /dev/block/stl6 /mnt/.lfs
+    insmod /lib/modules/param.ko
+
 on boot
-
-    # insert modules
-    insmod /system/lib/modules/storage.ko
-
-    # ko files for vibrator
-    insmod /system/lib/modules/vibrator.ko
-
-    insmod /system/lib/modules/bthid.ko
-    insmod /system/lib/modules/tun.ko
-    insmod /system/lib/cifs.ko
 
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
-# Run sysinit
-    exec /system/bin/sysinit
-    
     setprop ro.build.product aries
     setprop ro.product.device aries
     setprop ro.radio.noril yes
@@ -39,6 +38,57 @@ on boot
 
 # phone
     setprop ro.telephony.call_ring.multiple 0
+
+on fs
+# system
+    mount ext4 /dev/block/stl9 /system
+
+# cache
+    mount ext4 /dev/block/stl11 /cache wait nosuid noatime nodiratime noauto_da_alloc
+
+# data
+    mount ext4 /dev/block/mmcblk0p2 /data wait nosuid noatime nodiratime noauto_da_alloc
+
+# datadata - not used atm
+    mount ext4 /dev/block/stl10 /datadata nosuid nodev nodiratime noauto_da_alloc
+
+# We chown/chmod /efs because mount is run as root + defaults
+    mkdir /efs 0775 radio radio
+    mount rfs /dev/block/stl3 /efs nosuid nodev check=no
+    chown radio radio /efs
+    chmod 770 /efs/bluetooth
+    chmod 770 /efs/imei
+
+# permissions for bluetooth.
+    chown bluetooth bluetooth /dev/s3c2410_serial0
+    chown bluetooth bluetooth /data/bdaddr
+    chmod 0660 /dev/s3c2410_serial0
+    chmod 0660 /sys/class/rfkill/rfkill0/state
+    chmod 0660 /sys/class/rfkill/rfkill1/state
+    chmod 0660 /sys/class/rfkill/rfkill2/state
+    chmod 0660 /sys/class/rfkill/rfkill3/state
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill1/state
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill2/state
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill3/state
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill1/type
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill2/type
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill3/type
+
+# Permissions for System Server and daemons.
+    chown system system /sys/class/backlight/s5p_bl/brightness
+
+on post-fs
+
+    insmod /system/lib/modules/vibrator.ko
+    insmod /system/lib/modules/bthid.ko
+    insmod /system/lib/modules/tun.ko
+    insmod /system/lib/cifs.ko
+
+    # We chown/chmod /datadata again so because mount is run as root + defaults
+    chown system system /datadata
+    chmod 0771 /datadata
 
 # for sensor control
     chown system input /sys/class/input/input0/enable
@@ -213,45 +263,6 @@ on boot
     chmod 0660 /sys/class/timed_output/vibrator/enable
     chown system system /sys/class/timed_output/vibrator/enable
 
-on fs
-    mount ext4 /dev/block/stl9 /system
-    mount ext4 /dev/block/stl11 /cache nosuid nodev noatime nodiratime noauto_da_alloc
-    mount ext4 /dev/block/mmcblk0p2 /data wait nosuid noatime nodiratime noauto_da_alloc
-    mount ext4 /dev/block/stl10 /datadata nosuid nodev nodiratime noauto_da_alloc
-
-# We chown/chmod /efs because mount is run as root + defaults
-    mkdir /efs 0775 radio radio
-    mount rfs /dev/block/stl3 /efs nosuid nodev check=no
-    chown radio radio /efs
-    chmod 770 /efs/bluetooth
-    chmod 770 /efs/imei
-
-# permissions for bluetooth.
-    chown bluetooth bluetooth /dev/s3c2410_serial0
-    chown bluetooth bluetooth /data/bdaddr
-    chmod 0660 /dev/s3c2410_serial0
-    chmod 0660 /sys/class/rfkill/rfkill0/state
-    chmod 0660 /sys/class/rfkill/rfkill1/state
-    chmod 0660 /sys/class/rfkill/rfkill2/state
-    chmod 0660 /sys/class/rfkill/rfkill3/state
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill1/state
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill2/state
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill3/state
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill1/type
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill2/type
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill3/type
-
-# Permissions for System Server and daemons.
-    chown system system /sys/class/backlight/s5p_bl/brightness
-
-on post-fs
-
-    # We chown/chmod /datadata again so because mount is run as root + defaults
-    chown system system /datadata
-    chmod 0771 /datadata
-
 # allow system to modify cpufreq control files
     chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
     chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
@@ -302,6 +313,9 @@ on post-fs-data
 # cheatin
 on property:ro.debuggable=1
     start adbd
+
+# Run sysinit
+    exec /system/bin/sysinit
 
     setprop vold.post_fs_data_done 1
 
