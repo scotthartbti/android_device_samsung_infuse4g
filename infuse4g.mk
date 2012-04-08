@@ -79,17 +79,17 @@ PRODUCT_PACKAGES := \
 	setup_fs
 
 # These are the OpenMAX IL configuration files
-#PRODUCT_COPY_FILES += \
-#	device/samsung/aries-common/sec_mm/sec_omx/sec_omx_core/secomxregistry:system/etc/secomxregistry \
-#	device/samsung/aries-common/media_profiles.xml:system/etc/media_profiles.xml
+PRODUCT_COPY_FILES += \
+	device/samsung/aries-common/sec_mm/sec_omx/sec_omx_core/secomxregistry:system/etc/secomxregistry \
+	device/samsung/aries-common/media_profiles.xml:system/etc/media_profiles.xml
 
 # These are the OpenMAX IL modules
-#PRODUCT_PACKAGES += \
-# 	libSEC_OMX_Core.aries \
-#	libOMX.SEC.AVC.Decoder.aries \
-# 	libOMX.SEC.M4V.Decoder.aries \
-#	libOMX.SEC.M4V.Encoder.aries \
-#	libOMX.SEC.AVC.Encoder.aries
+PRODUCT_PACKAGES += \
+ 	libSEC_OMX_Core.aries \
+	libOMX.SEC.AVC.Decoder.aries \
+ 	libOMX.SEC.M4V.Decoder.aries \
+	libOMX.SEC.M4V.Encoder.aries \
+	libOMX.SEC.AVC.Encoder.aries
 
 PRODUCT_PACKAGES += \
 	audio.primary.aries \
@@ -98,8 +98,9 @@ PRODUCT_PACKAGES += \
 	lights.aries
 
 # Libs
-#PRODUCT_PACKAGES += \
-#	libstagefrighthw
+PRODUCT_PACKAGES += \
+	hwcomposer.aries \
+	libstagefrighthw
 
 # apns config file
 PRODUCT_COPY_FILES += \
