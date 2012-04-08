@@ -352,7 +352,6 @@ service wpa_supplicant /system/bin/wpa_supplicant -Dwext -ieth0 -c/data/misc/wif
     oneshot
 
 service hciattach /system/bin/logwrapper /system/bin/hciattach /dev/s3c2410_serial0 any
-#service hciattach /system/bin/logwrapper /system/bin/brcm_patchram_plus --enable_hci --enable_lpm --baudrate 2000000 --patchram /system/bin/BCM4330B1_002.001.003.0043.0061.hcd /dev/s3c2410_serial0
     class main
     user bluetooth
     group bluetooth net_bt_admin
