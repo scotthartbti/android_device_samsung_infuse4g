@@ -335,7 +335,7 @@ service bdaddr /system/bin/bdaddr_read
 on property:init.svc.bootanim=running
     start bdaddr
 
-service dhcpcd_eth0 /system/bin/dhcpcd -ABKL eth0
+service dhcpcd_eth0 /system/bin/dhcpcd -ABKL
     class main
     disabled
     oneshot
