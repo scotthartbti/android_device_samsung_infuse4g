@@ -45,7 +45,7 @@ PRODUCT_COPY_FILES := \
 	device/samsung/infuse4g/prebuilt/etc/asound.conf:system/etc/asound.conf \
 	device/samsung/infuse4g/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
 	device/samsung/infuse4g/prebuilt/lib/egl/egl.cfg:system/lib/egl/egl.cfg \
-	device/samsung/infuse4g/prebuilt/usr/idc/qt602240_ts_input.idc:system/usr/idc/qt602240_ts_input.idc \
+	device/samsung/infuse4g/prebuilt/usr/idc/sec_touchscreen.idc:system/usr/idc/sec_touchscreen.idc \
 	device/samsung/aries-common/main.conf:system/etc/bluetooth/main.conf
 
 # Init files
@@ -62,21 +62,17 @@ PRODUCT_COPY_FILES += \
 	device/samsung/infuse4g/prebuilt/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
 	device/samsung/infuse4g/prebuilt/usr/keylayout/Broadcom_Bluetooth_HID.kl:system/usr/keylayout/Broadcom_Bluetooth_HID.kl \
 	device/samsung/infuse4g/prebuilt/usr/keylayout/melfas_touchkey.kl:system/usr/keylayout/melfas_touchkey.kl \
-	device/samsung/infuse4g/prebuilt/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
 	device/samsung/infuse4g/prebuilt/usr/keylayout/sec_jack.kl:system/usr/keylayout/sec_jack.kl
 
-# Prebuilt kcm keymaps
-PRODUCT_COPY_FILES += \
-	device/samsung/infuse4g/prebuilt/usr/keychars/aries-keypad.kcm.bin:system/usr/keychars/aries-keypad.kcm.bin \
-	device/samsung/infuse4g/prebuilt/usr/keychars/Broadcom_Bluetooth_HID.kcm.bin:system/usr/keychars/Broadcom_Bluetooth_HID.kcm.bin \
-	device/samsung/infuse4g/prebuilt/usr/keychars/melfas_touchkey.kcm.bin:system/usr/keychars/melfas_touchkey.kcm.bin \
-	device/samsung/infuse4g/prebuilt/usr/keychars/qwerty.kcm.bin:system/usr/keychars/qwerty.kcm.bin \
-	device/samsung/infuse4g/prebuilt/usr/keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin
+# Generated kcm keymaps
+PRODUCT_PACKAGES := \
+	aries-keypad.kcm \
+	Broadcom_Bluetooth_HID.kcm \
+	melfas_touchkey.kcm
 
 # Filesystem management tools
-PRODUCT_PACKAGES := \
-	make_ext4fs \
-	setup_fs
+PRODUCT_PACKAGES += \
+	make_ext4fs
 
 # These are the OpenMAX IL configuration files
 PRODUCT_COPY_FILES += \
@@ -102,18 +98,15 @@ PRODUCT_PACKAGES += \
 	hwcomposer.aries \
 	libstagefrighthw
 
-# apns config file
-PRODUCT_COPY_FILES += \
-    development/data/etc/apns-conf.xml:system/etc/apns-conf.xml
-
 # Bluetooth MAC Address
 PRODUCT_PACKAGES += \
 	bdaddr_read
 
 # Service Mode Secret Code
-#PRODUCT_PACKAGES += \
-#    SamsungServiceMode \
-#    AriesParts
+PRODUCT_PACKAGES += \
+	SamsungServiceMode \
+	AriesParts \
+	tvouthack
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -133,7 +126,7 @@ PRODUCT_COPY_FILES += \
 # The OpenGL ES API level that is natively supported by this device.
 # This is a 16.16 fixed point number
 PRODUCT_PROPERTY_OVERRIDES := \
-    ro.opengles.version=131072
+	ro.opengles.version=131072
 
 # These are the hardware-specific settings that are stored in system properties.
 # Note that the only such settings should be the ones that are too low-level to
@@ -177,41 +170,17 @@ include frameworks/base/build/phone-hdpi-512-dalvik-heap.mk
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-# kernel modules
-# root
+# kernel modules for ramdisk
 PRODUCT_COPY_FILES += \
-    device/samsung/infuse4g/modules/fsr.ko:root/lib/modules/fsr.ko \
-    device/samsung/infuse4g/modules/fsr_stl.ko:root/lib/modules/fsr_stl.ko \
-    device/samsung/infuse4g/modules/j4fs.ko:root/lib/modules/j4fs.ko \
-    device/samsung/infuse4g/modules/param.ko:root/lib/modules/param.ko \
-    device/samsung/infuse4g/modules/rfs_fat.ko:root/lib/modules/rfs_fat.ko \
-    device/samsung/infuse4g/modules/rfs_glue.ko:root/lib/modules/rfs_glue.ko \
+    $(call find-copy-subdir-files,*,device/samsung/infuse4g/modules/ramdisk,root/lib/modules)
 
-
-#recovery
 PRODUCT_COPY_FILES += \
-    device/samsung/infuse4g/modules/fsr.ko:recovery/root/lib/modules/fsr.ko \
-    device/samsung/infuse4g/modules/fsr_stl.ko:recovery/root/lib/modules/fsr_stl.ko \
-    device/samsung/infuse4g/modules/j4fs.ko:recovery/lib/modules/j4fs.ko \
-    device/samsung/infuse4g/modules/param.ko:recovery/lib/modules/param.ko \
-    device/samsung/infuse4g/modules/rfs_fat.ko:recovery/root/lib/modules/rfs_fat.ko \
-    device/samsung/infuse4g/modules/rfs_glue.ko:recovery/root/lib/modules/rfs_glue.ko \
+    $(call find-copy-subdir-files,*,device/samsung/infuse4g/modules/ramdisk,recovery/root/lib/modules)
 
-#system
-PRODUCT_COPY_FILES += \
-    device/samsung/infuse4g/modules/bthid.ko:system/lib/modules/bthid.ko \
-    device/samsung/infuse4g/modules/dhd.ko:system/lib/modules/dhd.ko \
-    device/samsung/infuse4g/modules/storage.ko:system/lib/modules/storage.ko \
-    device/samsung/infuse4g/modules/tun.ko:system/lib/modules/tun.ko \
-    device/samsung/infuse4g/modules/cifs.ko:system/lib/modules/cifs.ko \
-    device/samsung/infuse4g/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
-    device/samsung/infuse4g/modules/ansi_cprng.ko:system/lib/modules/ansi_cprng.ko \
-    device/samsung/infuse4g/modules/vibrator.ko:system/lib/modules/vibrator.ko
-
-#PRODUCT_COPY_FILES += \
-#	device/samsung/infuse4g/prebuilt/bin/hciattach:system/bin/hciattach \
-#	device/samsung/infuse4g/prebuilt/bin/brcm_patchram_plus:system/bin/brcm_patchram_plus
-
+# other kernel modules not in ramdisk
+PRODUCT_COPY_FILES += $(foreach module,\
+    $(filter-out $(RAMDISK_MODULES),$(wildcard device/samsung/infuse4g/modules/*.ko)),\
+    $(module):system/lib/modules/$(notdir $(module)))
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
     LOCAL_KERNEL := device/samsung/infuse4g/kernel
