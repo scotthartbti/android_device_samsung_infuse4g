@@ -98,6 +98,11 @@ PRODUCT_PACKAGES += \
 	hwcomposer.aries \
 	libstagefrighthw
 
+# Camera
+PRODUCT_PACKAGES += \
+	camera.aries \
+	libs3cjpeg
+
 # Bluetooth MAC Address
 PRODUCT_PACKAGES += \
 	bdaddr_read
