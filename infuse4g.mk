@@ -108,10 +108,10 @@ PRODUCT_PACKAGES += \
 	bdaddr_read
 
 # Service Mode Secret Code
-PRODUCT_PACKAGES += \
-	SamsungServiceMode \
-	AriesParts \
-	tvouthack
+#PRODUCT_PACKAGES += \
+#	SamsungServiceMode \
+#	AriesParts \
+#	tvouthack
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \

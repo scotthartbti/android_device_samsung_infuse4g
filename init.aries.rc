@@ -364,9 +364,9 @@ service ste-cg29xx_ctrl /system/vendor/bin/ste-cg29xx_ctrl -b 115200 /dev/s3c241
 
 # +STE GPS Daemon
 #GPS_CHIPSET_STE_CG2900
-service agpsd /system/vendor/bin/agpsd
-     class late_start
-     user system
-     group system inet
-     oneshot
+#service agpsd /system/vendor/bin/agpsd
+#     class late_start
+#     user system
+#     group system inet
+#     oneshot
 
