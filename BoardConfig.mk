@@ -93,6 +93,7 @@ WIFI_DRIVER_MODULE_ARG      :=  "firmware_path=/vendor/firmware/bcm4330_sta.bin 
 
 # Vold
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/usb_mass_storage/lun%d/file"
 
 # Recovery
 TARGET_USERIMAGES_USE_EXT4 := true
