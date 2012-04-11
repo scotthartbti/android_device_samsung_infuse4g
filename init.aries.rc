@@ -49,9 +49,6 @@ on fs
 # data
     mount ext4 /dev/block/mmcblk0p2 /data wait nosuid noatime nodiratime noauto_da_alloc
 
-# datadata - not used atm
-    mount ext4 /dev/block/stl10 /datadata nosuid nodev nodiratime noauto_da_alloc
-
 # We chown/chmod /efs because mount is run as root + defaults
     mkdir /efs 0775 radio radio
     mount rfs /dev/block/stl3 /efs nosuid nodev check=no
@@ -85,10 +82,6 @@ on post-fs
     insmod /system/lib/modules/bthid.ko
     insmod /system/lib/modules/tun.ko
     insmod /system/lib/cifs.ko
-
-    # We chown/chmod /datadata again so because mount is run as root + defaults
-    chown system system /datadata
-    chmod 0771 /datadata
 
 # for sensor control
     chown system input /sys/class/input/input0/enable
