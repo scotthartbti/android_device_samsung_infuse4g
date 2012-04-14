@@ -234,11 +234,11 @@ on post-fs
 
  #change permissions for lcd
     chown radio system /sys/class/lcd/s5p_lcd/lcd_power
-    chown radio radio /sys/class/gammaset/switch_gammaset/gammaset_file_cmd
+    chown system system /sys/class/gammaset/switch_gammaset/gammaset_file_cmd
     chown radio radio /sys/class/aclset/switch_aclset/aclset_file_cmd
     chown radio system /sys/class/sec/sec_lcd/lcdtype_file_cmd
-    chown radio radio /sys/class/mdnieset_ui/switch_mdnieset_ui/mdnieset_ui_file_cmd
-    chown radio radio /sys/class/mdnieset_outdoor/switch_mdnieset_outdoor/mdnieset_outdoor_file_cmd
+    chown system system /sys/class/mdnieset_ui/switch_mdnieset_ui/mdnieset_ui_file_cmd
+    chown system system /sys/class/mdnieset_outdoor/switch_mdnieset_outdoor/mdnieset_outdoor_file_cmd
 
  #change permissions for touchkey
     chown radio system /sys/class/misc/melfas_touchkey/touch_version
