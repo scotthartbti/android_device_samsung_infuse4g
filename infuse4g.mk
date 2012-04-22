@@ -137,11 +137,11 @@ PRODUCT_PROPERTY_OVERRIDES := \
 # Note that the only such settings should be the ones that are too low-level to
 # be reachable from resources or other mechanisms.
 PRODUCT_PROPERTY_OVERRIDES += \
-       wifi.interface=eth0 \
+       wifi.interface=wlan0 \
        wifi.supplicant_scan_interval=20 \
        ro.telephony.ril_class=SamsungRIL \
        ro.telephony.ril.v3=icccardstatus,datacall,signalstrength,facilitylock \
-       mobiledata.interfaces=pdp0,eth0,gprs,ppp0 \
+       mobiledata.interfaces=pdp0,wlan0,gprs,ppp0 \
        persist.sys.vold.switchexternal=1
     
 # enable Google-specific location features,
