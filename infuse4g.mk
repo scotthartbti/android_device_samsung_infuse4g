@@ -81,9 +81,9 @@ PRODUCT_COPY_FILES += \
 
 # These are the OpenMAX IL modules
 PRODUCT_PACKAGES += \
- 	libSEC_OMX_Core.aries \
+	libSEC_OMX_Core.aries \
 	libOMX.SEC.AVC.Decoder.aries \
- 	libOMX.SEC.M4V.Decoder.aries \
+	libOMX.SEC.M4V.Decoder.aries \
 	libOMX.SEC.M4V.Encoder.aries \
 	libOMX.SEC.AVC.Encoder.aries
 
@@ -108,10 +108,12 @@ PRODUCT_PACKAGES += \
 	bdaddr_read
 
 # Service Mode Secret Code
-#PRODUCT_PACKAGES += \
-#	SamsungServiceMode \
-#	AriesParts \
-#	tvouthack
+PRODUCT_PACKAGES += \
+	SamsungServiceMode
+
+# Infuse Settings
+PRODUCT_PACKAGES += \
+	InfuseSettings
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -143,7 +145,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
        ro.telephony.ril.v3=icccardstatus,datacall,signalstrength,facilitylock \
        mobiledata.interfaces=pdp0,wlan0,gprs,ppp0 \
        persist.sys.vold.switchexternal=1
-    
+
 # enable Google-specific location features,
 # like NetworkLocationProvider and LocationCollector
 PRODUCT_PROPERTY_OVERRIDES += \
