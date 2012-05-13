@@ -14,7 +14,7 @@
   			android:entryValues="@array/mdnie_scenario_entries_values"
   			android:defaultValue="0" />
 
-    <!-- mDNIe Mode -->
+<!--
     <com.cyanogenmod.settings.device.mDNIeMode
 	        android:key="mdnie_mode"
 	        android:title="@string/mdnie_mode_title_head"
@@ -23,7 +23,6 @@
   			android:entryValues="@array/mdnie_mode_entries_values"
   			android:defaultValue="1" />
 
-    <!-- mDNIe Negative mode -->
     <com.cyanogenmod.settings.device.mDNIeNegative
 	        android:key="mdnie_negative"
 	        android:title="@string/mdnie_negative_title_head"
@@ -31,6 +30,7 @@
 	        android:entries="@array/mdnie_negative_entries"
   			android:entryValues="@array/mdnie_negative_entries_values"
   			android:defaultValue="0" />
+-->
 
     <!-- mDNIe Outdoor mode -->
     <com.cyanogenmod.settings.device.mDNIeOutdoor
@@ -51,6 +51,7 @@
                         android:defaultValue="0" />
 
     </PreferenceCategory>
+<!--
     <PreferenceCategory
                 android:title="@string/touchscreen_subcat_title">
     <com.cyanogenmod.settings.device.TouchscreenSensitivity
@@ -61,4 +62,5 @@
                 android:entryValues="@array/touchscreen_sensitivity_entries_values"
                 android:defaultValue="50" />
     </PreferenceCategory>
+-->
 </PreferenceScreen>

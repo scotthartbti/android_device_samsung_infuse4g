@@ -23,11 +23,13 @@ import com.cyanogenmod.settings.device.R;
 public class mDNIeFragmentActivity extends PreferenceFragment {
 
     private mDNIeScenario mmDNIeScenario;
+/*
     private mDNIeMode mmDNIeMode;
     private mDNIeNegative mmDNIeNegative;
+*/
     private mDNIeOutdoor mmDNIeOutdoor;
     private PanelGamma mPanelGamma;
-    private TouchscreenSensitivity mTouchscreenSensitivity;
+    //   private TouchscreenSensitivity mTouchscreenSensitivity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,11 +40,13 @@ public class mDNIeFragmentActivity extends PreferenceFragment {
         mmDNIeScenario = (mDNIeScenario) findPreference(DeviceSettings.KEY_MDNIE_SCENARIO);
         mmDNIeScenario.setEnabled(mDNIeScenario.isSupported());
 
+	/*
         mmDNIeMode = (mDNIeMode) findPreference(DeviceSettings.KEY_MDNIE_MODE);
         mmDNIeMode.setEnabled(mDNIeMode.isSupported());
 
         mmDNIeNegative = (mDNIeNegative) findPreference(DeviceSettings.KEY_MDNIE_NEGATIVE);
         mmDNIeNegative.setEnabled(mDNIeNegative.isSupported());
+	*/
 
         mmDNIeOutdoor = (mDNIeOutdoor) findPreference(DeviceSettings.KEY_MDNIE_OUTDOOR);
         mmDNIeOutdoor.setEnabled(mDNIeOutdoor.isSupported());
@@ -50,8 +54,10 @@ public class mDNIeFragmentActivity extends PreferenceFragment {
         mPanelGamma = (PanelGamma) findPreference(DeviceSettings.KEY_PANEL_GAMMA);
         mPanelGamma.setEnabled(mPanelGamma.isSupported());
 
+	/*
         mTouchscreenSensitivity = (TouchscreenSensitivity) findPreference(DeviceSettings.KEY_TOUCHSCREEN_SENSITIVITY);
         mTouchscreenSensitivity.setEnabled(mTouchscreenSensitivity.isSupported());
+	*/
     }
 
 }

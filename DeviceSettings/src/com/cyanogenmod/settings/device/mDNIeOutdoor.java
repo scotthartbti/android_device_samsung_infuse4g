@@ -31,7 +31,7 @@ public class mDNIeOutdoor extends ListPreference implements OnPreferenceChangeLi
         this.setOnPreferenceChangeListener(this);
     }
 
-    private static final String FILE = "/sys/class/mdnie/mdnie/outdoor";
+    private static final String FILE = "/sys/class/mdnieset_outdoor/switch_mdnieset_outdoor/mdnieset_outdoor_file_cmd";
 
     public static boolean isSupported() {
         return Utils.fileExists(FILE);

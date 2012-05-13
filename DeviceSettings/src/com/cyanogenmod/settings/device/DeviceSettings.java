@@ -67,8 +67,10 @@ public class DeviceSettings extends FragmentActivity {
                 RadioFragmentActivity.class, null);
         mTabsAdapter.addTab(bar.newTab().setText(R.string.category_mdnie_title),
                 mDNIeFragmentActivity.class, null);
+	/*
         mTabsAdapter.addTab(bar.newTab().setText(R.string.category_sensors_title),
                 SensorsFragmentActivity.class, null);
+	*/
 
         if (savedInstanceState != null) {
             bar.setSelectedNavigationItem(savedInstanceState.getInt("tab", 0));

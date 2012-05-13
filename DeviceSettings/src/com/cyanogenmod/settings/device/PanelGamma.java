@@ -32,7 +32,7 @@ public class PanelGamma extends ListPreference implements OnPreferenceChangeList
         this.setOnPreferenceChangeListener(this);
     }
 
-    private static final String FILE = "/sys/class/lcd/panel/gamma_mode";
+    private static final String FILE = "/sys/devices/virtual/gammaset/switch_gammaset/gammaset_file_cmd";
 
     public static boolean isSupported() {
         return Utils.fileExists(FILE);
@@ -52,7 +52,7 @@ public class PanelGamma extends ListPreference implements OnPreferenceChangeList
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        Log.d("SGS2","Writing " + ((String)newValue) + " to " + FILE);
+        Log.d("InfuseSettings","Writing " + ((String)newValue) + " to " + FILE);
         Utils.writeValue(FILE, (String) newValue);
         return true;
     }

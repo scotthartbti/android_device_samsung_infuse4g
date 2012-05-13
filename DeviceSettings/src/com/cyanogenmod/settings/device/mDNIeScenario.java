@@ -32,7 +32,7 @@ public class mDNIeScenario extends ListPreference implements OnPreferenceChangeL
         this.setOnPreferenceChangeListener(this);
     }
 
-    private static final String FILE = "/sys/class/mdnie/mdnie/scenario";
+    private static final String FILE = "/sys/class/mdnieset_ui/switch_mdnieset_ui/mdnieset_ui_file_cmd";
 
     public static boolean isSupported() {
         return Utils.fileExists(FILE);
