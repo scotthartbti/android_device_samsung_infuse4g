@@ -108,6 +108,11 @@ BOARD_CUSTOM_BOOTIMG_MK := device/samsung/infuse4g/shbootimg.mk
 TARGET_RECOVERY_PRE_COMMAND := "echo 1 > /cache/.startrecovery; sync;"
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/infuse4g/recovery/graphics.c
 
+# Charging mode
+BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/charging_mode_booting
+BOARD_BATTERY_DEVICE_NAME := "battery"
+BOARD_CHARGER_RES := device/samsung/infuse4g/res/charger
+
 # legacy ts support
 BOARD_USE_LEGACY_TOUCHSCREEN := true
 

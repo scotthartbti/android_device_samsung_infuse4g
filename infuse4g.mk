@@ -54,7 +54,7 @@ PRODUCT_COPY_FILES += \
 	device/samsung/infuse4g/init.aries.usb.rc:root/init.aries.usb.rc \
 	device/samsung/infuse4g/init.aries.usb.rc:recovery/root/usb.rc \
 	device/samsung/infuse4g/ueventd.aries.rc:root/ueventd.aries.rc \
-	device/samsung/aries-common/lpm.rc:root/lpm.rc
+	device/samsung/infuse4g/lpm.rc:root/lpm.rc
 
 # Prebuilt kl keymaps
 PRODUCT_COPY_FILES += \
@@ -92,6 +92,11 @@ PRODUCT_PACKAGES += \
 	audio_policy.aries \
 	audio.a2dp.default \
 	lights.aries
+
+# Charger
+PRODUCT_PACKAGES += \
+    charger \
+    charger_res_images
 
 # Libs
 PRODUCT_PACKAGES += \
