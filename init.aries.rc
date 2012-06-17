@@ -344,7 +344,7 @@ service wpa_supplicant /system/bin/wpa_supplicant -Dnl80211 -iwlan0 -c/data/misc
     disabled
     oneshot
 
-service hciattach /system/bin/logwrapper /system/bin/hciattach -d 22 /dev/s3c2410_serial0 any
+service hciattach /system/bin/logwrapper /system/bin/hciattach /dev/s3c2410_serial0 any
     class main
     user bluetooth
     group bluetooth net_bt_admin

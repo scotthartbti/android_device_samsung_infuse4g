@@ -113,6 +113,9 @@ BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/charging_mode
 BOARD_BATTERY_DEVICE_NAME := "battery"
 BOARD_CHARGER_RES := device/samsung/infuse4g/res/charger
 
+# header overrides
+TARGET_SPECIFIC_HEADER_PATH := device/samsung/infuse4g/overlay/include
+
 # legacy ts support
 BOARD_USE_LEGACY_TOUCHSCREEN := true
 
