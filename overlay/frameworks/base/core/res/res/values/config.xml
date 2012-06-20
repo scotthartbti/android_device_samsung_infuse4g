@@ -173,7 +173,7 @@
     <integer name="config_screenBrightnessDim">10</integer>
 
     <!-- Boolean indicating whether the wifi chipset has p2p support -->
-    <!-- <bool translatable="false" name="config_wifi_p2p_support">true</bool> -->
+    <bool translatable="false" name="config_wifi_p2p_support">true</bool>
 
     <!-- Vibrator pattern for a very short but reliable vibration for soft keyboard tap -->
     <integer-array name="config_keyboardTapVibePattern">
