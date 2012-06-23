@@ -116,6 +116,10 @@ BOARD_CHARGER_RES := device/samsung/infuse4g/res/charger
 # header overrides
 TARGET_SPECIFIC_HEADER_PATH := device/samsung/infuse4g/overlay/include
 
+# While our kernel doesn't support MMC ERASE, we do have a defective eMMC
+# chipset.  Suppress ERASE by recovery and update-binary just to be sure
+BOARD_SUPPRESS_EMMC_WIPE := true
+
 # legacy ts support
 BOARD_USE_LEGACY_TOUCHSCREEN := true
 
