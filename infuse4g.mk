@@ -195,10 +195,6 @@ PRODUCT_COPY_FILES += $(foreach module,\
     $(filter-out $(RAMDISK_MODULES),$(wildcard device/samsung/infuse4g/modules/*.ko)),\
     $(module):system/lib/modules/$(notdir $(module)))
 
-#PRODUCT_COPY_FILES += \
-#    device/samsung/infuse4g/prebuilt/bin/hciattach:system/bin/hciattach \
-#    device/samsung/infuse4g/prebuilt/bin/brcm_patchram_plus:system/bin/brcm_patchram_plus
-
 ifeq ($(TARGET_PREBUILT_KERNEL),)
     LOCAL_KERNEL := device/samsung/infuse4g/kernel
 else
