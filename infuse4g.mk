@@ -185,24 +185,10 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 # kernel modules for ramdisk
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,device/samsung/infuse4g/modules/ramdisk,root/lib/modules)
+    $(call find-copy-subdir-files,*,device/samsung/infuse4g/modules,root/lib/modules)
 
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,device/samsung/infuse4g/modules/ramdisk,recovery/root/lib/modules)
-
-# other kernel modules not in ramdisk
-PRODUCT_COPY_FILES += $(foreach module,\
-    $(filter-out $(RAMDISK_MODULES),$(wildcard device/samsung/infuse4g/modules/*.ko)),\
-    $(module):system/lib/modules/$(notdir $(module)))
-
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-    LOCAL_KERNEL := device/samsung/infuse4g/kernel
-else
-    LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
+    $(call find-copy-subdir-files,*,device/samsung/infuse4g/modules,recovery/root/lib/modules)
 
 # See comment at the top of this file. This is where the other
 # half of the device-specific product definition file takes care
