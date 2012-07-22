@@ -53,7 +53,7 @@ TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/samsung/infuse4g/releaseto
 #BOARD_CAMERA_LIBRARIES := libcamera
 #endif
 
-# TARGET_PROVIDES_LIBAUDIO := true
+TARGET_PROVIDES_LIBCAMERA := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
