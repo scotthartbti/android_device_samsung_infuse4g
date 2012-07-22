@@ -541,6 +541,7 @@ private:
     int             m_camera_af_flag;
 
     int             m_flag_camera_start;
+    int             m_flag_camera_restart;
 
     int             m_jpeg_fd;
     int             m_jpeg_thumbnail_width;
