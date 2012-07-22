@@ -75,34 +75,12 @@ namespace android {
 #define JOIN(x, y) JOIN_AGAIN(x, y)
 #define JOIN_AGAIN(x, y) x ## y
 
-#ifndef M5MO_CAMERA
-#define FRONT_CAM VGA
-#define BACK_CAM S5K4ECGX
-#else
 #define FRONT_CAM SR130PC10
 #define BACK_CAM M5MO
-#endif
 
 #if !defined (FRONT_CAM) || !defined(BACK_CAM)
 #error "Please define the Camera module"
 #endif
-
-#define S5K4ECGX_PREVIEW_WIDTH            1280
-#define S5K4ECGX_PREVIEW_HEIGHT           720
-#define S5K4ECGX_SNAPSHOT_WIDTH           2560
-#define S5K4ECGX_SNAPSHOT_HEIGHT          1920
-
-#define S5K4ECGX_POSTVIEW_WIDTH           640
-#define S5K4ECGX_POSTVIEW_WIDE_WIDTH      800
-#define S5K4ECGX_POSTVIEW_HEIGHT          480
-#define S5K4ECGX_POSTVIEW_BPP             16
-
-#define S5K4ECGX_THUMBNAIL_WIDTH          320
-#define S5K4ECGX_THUMBNAIL_HEIGHT         240
-#define S5K4ECGX_THUMBNAIL_BPP            16
-
-/* focal length of 3.43mm */
-#define S5K4ECGX_FOCAL_LENGTH             343
 
 #define M5MO_PREVIEW_WIDTH            1920
 #define M5MO_PREVIEW_HEIGHT           1080
@@ -120,18 +98,6 @@ namespace android {
 
 /* focal length of 3.93mm */
 #define M5MO_FOCAL_LENGTH             393
-
-#define VGA_PREVIEW_WIDTH               640
-#define VGA_PREVIEW_HEIGHT              480
-#define VGA_SNAPSHOT_WIDTH              640
-#define VGA_SNAPSHOT_HEIGHT             480
-
-#define VGA_THUMBNAIL_WIDTH             160
-#define VGA_THUMBNAIL_HEIGHT            120
-#define VGA_THUMBNAIL_BPP               16
-
-/* focal length of 0.9mm */
-#define VGA_FOCAL_LENGTH                90
 
 #define SR130PC10_PREVIEW_WIDTH               640
 #define SR130PC10_PREVIEW_HEIGHT              480

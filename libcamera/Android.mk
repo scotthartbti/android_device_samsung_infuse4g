@@ -26,14 +26,6 @@ ifdef BOARD_SECOND_CAMERA_DEVICE
     LOCAL_CFLAGS += -DFFC_PRESENT
 endif
 
-ifeq ($(BOARD_CAMERA_HAS_FLASH),true)
-    LOCAL_CFLAGS += -DHAVE_FLASH
-endif
-
-ifeq ($(BOARD_CAMERA_M5MO),true)
-    LOCAL_CFLAGS += -DM5MO_CAMERA
-endif
-
 include $(BUILD_SHARED_LIBRARY)
 
 endif
