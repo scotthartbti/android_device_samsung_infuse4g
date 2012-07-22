@@ -36,7 +36,6 @@ TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
 TARGET_PROVIDES_INIT := true
-#TARGET_PROVIDES_INIT_TARGET_RC := true
 TARGET_BOARD_PLATFORM := s5pc110
 TARGET_BOOTLOADER_BOARD_NAME := aries
 TARGET_RECOVERY_INITRC := device/samsung/infuse4g/recovery.rc
@@ -47,13 +46,7 @@ BOARD_MOBILEDATA_INTERFACE_NAME = "pdp0"
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/samsung/infuse4g/releasetools/infuse4g_ota_from_target_files
 TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/samsung/infuse4g/releasetools/infuse4g_img_from_target_files
 
-# Camera
-#USE_CAMERA_STUB := false
-#ifeq ($(USE_CAMERA_STUB),false)
-#BOARD_CAMERA_LIBRARIES := libcamera
-#endif
-
-# TARGET_PROVIDES_LIBAUDIO := true
+TARGET_PROVIDES_LIBAUDIO := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -62,12 +55,10 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/samsung/infuse4g/vibrator/tspdrv.c
 
 # Video Devices
-#BOARD_USES_OVERLAY := true
 BOARD_V4L2_DEVICE := /dev/video1
 BOARD_CAMERA_DEVICE := /dev/video0
 BOARD_SECOND_CAMERA_DEVICE := /dev/video2
-BOARD_CAMERA_HAS_FLASH := true
-BOARD_CAMERA_M5MO := true
+TARGET_PROVIDES_LIBCAMERA := true
 
 BOARD_NAND_PAGE_SIZE := 4096
 BOARD_NAND_SPARE_SIZE := 128
@@ -128,6 +119,14 @@ BOARD_USE_LEGACY_TOUCHSCREEN := true
 
 # Hardware rendering
 USE_OPENGL_RENDERER := true
+
+# TARGET_DISABLE_TRIPLE_BUFFERING can be used to disable triple buffering
+# on per target basis. On crespo it is possible to do so in theory
+# to save memory, however, there are currently some limitations in the
+# OpenGL ES driver that in conjunction with disable triple-buffering
+# would hurt performance significantly (see b/6016711)
+TARGET_DISABLE_TRIPLE_BUFFERING := false
+BOARD_ALLOW_EGL_HIBERNATION := true
 
 # skia
 BOARD_USE_SKIA_LCDTEXT := true

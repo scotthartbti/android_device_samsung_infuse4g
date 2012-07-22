@@ -68,7 +68,9 @@ def WriteFullOTAPackage(input_zip, output_zip):
   AppendAssertions(script, input_zip)
   device_specific.FullOTA_Assertions()
   if OPTIONS.backuptool:
+    script.Mount("/system")
     script.RunBackup("backup")
+    script.Unmount("/system")
 
   script.ShowProgress(0.5, 0)
 
@@ -80,13 +82,8 @@ def WriteFullOTAPackage(input_zip, output_zip):
   script.UnpackPackageDir("recovery", "/system")
   script.UnpackPackageDir("system", "/system")
 
-  (symlinks, retouch_files) = CopySystemFiles(input_zip, output_zip)
+  symlinks = CopySystemFiles(input_zip, output_zip)
   script.MakeSymlinks(symlinks)
-
-  if OPTIONS.aslr_mode:
-    script.RetouchBinaries(retouch_files)
-  else:
-    script.UndoRetouchBinaries(retouch_files)
 
   CopyBootFiles(input_zip, output_zip)
   CopyUpdaterFiles(output_zip)
