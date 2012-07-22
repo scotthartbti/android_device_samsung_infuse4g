@@ -1294,6 +1294,8 @@ int SecCamera::getExif(unsigned char *pExifDst, unsigned char *pThumbSrc)
 {
     JpegEncoder jpgEnc;
 
+    //FIXME:  Disabled thumbnails for now as they're always green
+#if 0
     ALOGV("%s : m_jpeg_thumbnail_width = %d, height = %d",
          __func__, m_jpeg_thumbnail_width, m_jpeg_thumbnail_height);
     if ((m_jpeg_thumbnail_width > 0) && (m_jpeg_thumbnail_height > 0)) {
@@ -1342,9 +1344,12 @@ int SecCamera::getExif(unsigned char *pExifDst, unsigned char *pThumbSrc)
         ALOGV("%s : enableThumb set to true", __func__);
         mExifInfo.enableThumb = true;
     } else {
+#endif
         ALOGV("%s : enableThumb set to false", __func__);
         mExifInfo.enableThumb = false;
+#if 0
     }
+#endif
 
     unsigned int exifSize;
 
