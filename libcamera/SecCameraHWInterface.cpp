@@ -160,12 +160,12 @@ void CameraHardwareSec::initDefaultParameters(int cameraId)
 
     if (cameraId == SecCamera::CAMERA_ID_BACK) {
         p.set(CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES,
-              "1280x720,800x480,720x480,640x480,592x480,352x288");
+              "1920x1080,1280x720,800x480,720x480,640x480,528x432,320x240");
         p.set(CameraParameters::KEY_SUPPORTED_PICTURE_SIZES,
-              "2560x1920,2560x1536,2048x1536,2048x1232,1600x1200,1600x960,800x480,640x480");
+              "3264x2448,3264x1968,2560x1920,2560x1536,2048x1536,2048x1232,1600x1200,1600x960,800x480,640x480");
     } else {
         p.set(CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES,
-              "640x480,320x240,176x144");
+              "640x480,352x288,320x240,176x144");
         p.set(CameraParameters::KEY_SUPPORTED_PICTURE_SIZES,
               "640x480");
     }
@@ -245,7 +245,6 @@ void CameraHardwareSec::initDefaultParameters(int cameraId)
     p.set(CameraParameters::KEY_SUPPORTED_EFFECTS, parameterString.string());
 
     if (cameraId == SecCamera::CAMERA_ID_BACK) {
-#ifdef HAVE_FLASH
         parameterString = CameraParameters::FLASH_MODE_ON;
         parameterString.append(",");
         parameterString.append(CameraParameters::FLASH_MODE_OFF);
@@ -257,7 +256,6 @@ void CameraHardwareSec::initDefaultParameters(int cameraId)
               parameterString.string());
         p.set(CameraParameters::KEY_FLASH_MODE,
               CameraParameters::FLASH_MODE_OFF);
-#endif
 
         parameterString = CameraParameters::SCENE_MODE_AUTO;
         parameterString.append(",");
@@ -280,9 +278,8 @@ void CameraHardwareSec::initDefaultParameters(int cameraId)
         parameterString.append(CameraParameters::SCENE_MODE_PARTY);
         parameterString.append(",");
         parameterString.append(CameraParameters::SCENE_MODE_CANDLELIGHT);
-        // TODO: CE147 doesn't understand scene mode
-        //p.set(CameraParameters::KEY_SUPPORTED_SCENE_MODES,
-        //      parameterString.string());
+        p.set(CameraParameters::KEY_SUPPORTED_SCENE_MODES,
+              parameterString.string());
         p.set(CameraParameters::KEY_SCENE_MODE,
               CameraParameters::SCENE_MODE_AUTO);
 
@@ -292,7 +289,7 @@ void CameraHardwareSec::initDefaultParameters(int cameraId)
         p.set(CameraParameters::KEY_SUPPORTED_PREVIEW_FPS_RANGE, "(15000,30000)");
         p.set(CameraParameters::KEY_PREVIEW_FPS_RANGE, "15000,30000");
 
-        p.set(CameraParameters::KEY_FOCAL_LENGTH, "3.43");
+        p.set(CameraParameters::KEY_FOCAL_LENGTH, "3.935");
 
         // touch focus
         p.set(CameraParameters::KEY_MAX_NUM_FOCUS_AREAS, "1");
@@ -1633,9 +1630,7 @@ status_t CameraHardwareSec::setParameters(const CameraParameters& params)
     if (mSecCamera->getCameraId() == SecCamera::CAMERA_ID_BACK) {
         int  new_scene_mode = -1;
 
-#ifdef HAVE_FLASH
         const char *new_flash_mode_str = params.get(CameraParameters::KEY_FLASH_MODE);
-#endif
 
         // fps range is (15000,30000) by default.
         mParameters.set(CameraParameters::KEY_SUPPORTED_PREVIEW_FPS_RANGE, "(15000,30000)");
@@ -1644,86 +1639,64 @@ status_t CameraHardwareSec::setParameters(const CameraParameters& params)
 
         if (!strcmp(new_scene_mode_str, CameraParameters::SCENE_MODE_AUTO)) {
             new_scene_mode = SCENE_MODE_NONE;
-#ifdef HAVE_FLASH
             mParameters.set(CameraParameters::KEY_SUPPORTED_FLASH_MODES, "on,off,auto,torch");
-#endif
         } else {
             // defaults for non-auto scene modes
             if (mSecCamera->getCameraId() == SecCamera::CAMERA_ID_BACK) {
                 new_focus_mode_str = CameraParameters::FOCUS_MODE_AUTO;
             }
-#ifdef HAVE_FLASH
             new_flash_mode_str = CameraParameters::FLASH_MODE_OFF;
-#endif
 
             if (!strcmp(new_scene_mode_str,
                        CameraParameters::SCENE_MODE_PORTRAIT)) {
                 new_scene_mode = SCENE_MODE_PORTRAIT;
-#ifdef HAVE_FLASH
                 new_flash_mode_str = CameraParameters::FLASH_MODE_AUTO;
                 mParameters.set(CameraParameters::KEY_SUPPORTED_FLASH_MODES, "auto");
-#endif
             } else if (!strcmp(new_scene_mode_str,
                                CameraParameters::SCENE_MODE_LANDSCAPE)) {
                 new_scene_mode = SCENE_MODE_LANDSCAPE;
-#ifdef HAVE_FLASH
                 new_flash_mode_str = CameraParameters::FLASH_MODE_OFF;
                 mParameters.set(CameraParameters::KEY_SUPPORTED_FLASH_MODES, "off");
-#endif
             } else if (!strcmp(new_scene_mode_str,
                                CameraParameters::SCENE_MODE_SPORTS)) {
                 new_scene_mode = SCENE_MODE_SPORTS;
-#ifdef HAVE_FLASH
                 new_flash_mode_str = CameraParameters::FLASH_MODE_OFF;
                 mParameters.set(CameraParameters::KEY_SUPPORTED_FLASH_MODES, "off");
-#endif
             } else if (!strcmp(new_scene_mode_str,
                                CameraParameters::SCENE_MODE_PARTY)) {
                 new_scene_mode = SCENE_MODE_PARTY_INDOOR;
-#ifdef HAVE_FLASH
                 new_flash_mode_str = CameraParameters::FLASH_MODE_AUTO;
                 mParameters.set(CameraParameters::KEY_SUPPORTED_FLASH_MODES, "auto");
-#endif
             } else if ((!strcmp(new_scene_mode_str,
                                 CameraParameters::SCENE_MODE_BEACH)) ||
                         (!strcmp(new_scene_mode_str,
                                  CameraParameters::SCENE_MODE_SNOW))) {
                 new_scene_mode = SCENE_MODE_BEACH_SNOW;
-#ifdef HAVE_FLASH
                 new_flash_mode_str = CameraParameters::FLASH_MODE_OFF;
                 mParameters.set(CameraParameters::KEY_SUPPORTED_FLASH_MODES, "off");
-#endif
             } else if (!strcmp(new_scene_mode_str,
                                CameraParameters::SCENE_MODE_SUNSET)) {
                 new_scene_mode = SCENE_MODE_SUNSET;
-#ifdef HAVE_FLASH
                 new_flash_mode_str = CameraParameters::FLASH_MODE_OFF;
                 mParameters.set(CameraParameters::KEY_SUPPORTED_FLASH_MODES, "off");
-#endif
             } else if (!strcmp(new_scene_mode_str,
                                CameraParameters::SCENE_MODE_NIGHT)) {
                 new_scene_mode = SCENE_MODE_NIGHTSHOT;
                 mParameters.set(CameraParameters::KEY_SUPPORTED_PREVIEW_FPS_RANGE, "(4000,30000)");
                 mParameters.set(CameraParameters::KEY_PREVIEW_FPS_RANGE,
                                 "4000,30000");
-#ifdef HAVE_FLASH
                 new_flash_mode_str = CameraParameters::FLASH_MODE_OFF;
                 mParameters.set(CameraParameters::KEY_SUPPORTED_FLASH_MODES, "off");
-#endif
             } else if (!strcmp(new_scene_mode_str,
                                CameraParameters::SCENE_MODE_FIREWORKS)) {
                 new_scene_mode = SCENE_MODE_FIREWORKS;
-#ifdef HAVE_FLASH
                 new_flash_mode_str = CameraParameters::FLASH_MODE_OFF;
                 mParameters.set(CameraParameters::KEY_SUPPORTED_FLASH_MODES, "off");
-#endif
             } else if (!strcmp(new_scene_mode_str,
                                CameraParameters::SCENE_MODE_CANDLELIGHT)) {
                 new_scene_mode = SCENE_MODE_CANDLE_LIGHT;
-#ifdef HAVE_FLASH
                 new_flash_mode_str = CameraParameters::FLASH_MODE_OFF;
                 mParameters.set(CameraParameters::KEY_SUPPORTED_FLASH_MODES, "off");
-#endif
             } else {
                 ALOGE("%s::unmatched scene_mode(%s)",
                         __func__, new_scene_mode_str); //action, night-portrait, theatre, steadyphoto
@@ -1784,7 +1757,6 @@ status_t CameraHardwareSec::setParameters(const CameraParameters& params)
             }
         }
 
-#ifdef HAVE_FLASH
         // flash..
         if (new_flash_mode_str != NULL) {
             int  new_flash_mode = -1;
@@ -1810,7 +1782,6 @@ status_t CameraHardwareSec::setParameters(const CameraParameters& params)
                 }
             }
         }
-#endif
 
         //  scene..
         if (0 <= new_scene_mode) {
@@ -2222,12 +2193,10 @@ static CameraInfo sCameraInfo[] = {
         CAMERA_FACING_BACK,
         90,  /* orientation */
     },
-#ifdef FFC_PRESENT
     {
         CAMERA_FACING_FRONT,
         270,  /* orientation */
     }
-#endif
 };
 
 /** Close this device */
