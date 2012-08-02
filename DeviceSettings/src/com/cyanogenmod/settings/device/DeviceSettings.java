@@ -45,6 +45,7 @@ public class DeviceSettings extends FragmentActivity {
     public static final String KEY_CALIBRATE_ACCELEROMETER = "calibrate_accelerometer";
     public static final String KEY_TOUCHSCREEN_SENSITIVITY = "touchscreen_sensitivity";
     public static final String KEY_TOUCHKEY_LIGHT = "touchkey_light";
+    public static final String KEY_USE_DOCK_AUDIO = "dock_audio";
 
     ViewPager mViewPager;
     TabsAdapter mTabsAdapter;
@@ -71,6 +72,8 @@ public class DeviceSettings extends FragmentActivity {
         mTabsAdapter.addTab(bar.newTab().setText(R.string.category_sensors_title),
                 SensorsFragmentActivity.class, null);
 	*/
+        mTabsAdapter.addTab(bar.newTab().setText(R.string.category_dock_title),
+                DockFragmentActivity.class, null);
 
         if (savedInstanceState != null) {
             bar.setSelectedNavigationItem(savedInstanceState.getInt("tab", 0));
