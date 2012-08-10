@@ -71,7 +71,9 @@ PRODUCT_PACKAGES := \
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
-	make_ext4fs
+	make_ext4fs \
+	setup_fs \
+	bml_over_mtd
 
 # These are the OpenMAX IL configuration files
 PRODUCT_COPY_FILES += \
@@ -192,12 +194,8 @@ include frameworks/native/build/phone-hdpi-512-dalvik-heap.mk
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-# kernel modules for ramdisk
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,device/samsung/infuse4g/modules,root/lib/modules)
-
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,device/samsung/infuse4g/modules,recovery/root/lib/modules)
+    device/samsung/infuse4g/updater.sh:updater.sh
 
 # See comment at the top of this file. This is where the other
 # half of the device-specific product definition file takes care

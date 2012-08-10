@@ -14,17 +14,6 @@ on init
     symlink /storage/sdcard1 /emmc
     symlink /storage/sdcard1 /mnt/emmc
 
-    insmod /lib/modules/fsr.ko
-    insmod /lib/modules/fsr_stl.ko
-    insmod /lib/modules/rfs_glue.ko
-    insmod /lib/modules/rfs_fat.ko
-    insmod /lib/modules/j4fs.ko
-    insmod /lib/modules/storage.ko
-
-    mkdir /mnt/.lfs 0755 root root
-    mount j4fs /dev/block/stl6 /mnt/.lfs
-    insmod /lib/modules/param.ko
-
 on boot
 
     mount debugfs /sys/kernel/debug /sys/kernel/debug
@@ -43,18 +32,17 @@ on boot
     setprop ro.telephony.call_ring.multiple 0
 
 on fs
-# system
-    mount ext4 /dev/block/stl9 /system
-
-# cache
-    mount ext4 /dev/block/stl11 /cache wait nosuid noatime nodiratime noauto_da_alloc
+    mkdir /radio 0775 radio radio
+    mount yaffs2 mtd@radio /radio
 
 # data
     mount ext4 /dev/block/mmcblk0p2 /data wait nosuid noatime nodiratime noauto_da_alloc
 
+    chown radio radio /radio/modem.bin
+
 # We chown/chmod /efs because mount is run as root + defaults
     mkdir /efs 0775 radio radio
-    mount rfs /dev/block/stl3 /efs nosuid nodev check=no
+    mount yaffs2 /dev/block/mtdblock4 /efs
     chown radio radio /efs
     chmod 770 /efs/bluetooth
     chmod 770 /efs/imei
@@ -80,6 +68,8 @@ on fs
     chown system system /sys/class/backlight/s5p_bl/brightness
 
 on post-fs
+    #symlinks for samsung RIL
+    symlink /radio/modem.bin /dev/block/bml12
 
     insmod /system/lib/modules/vibrator.ko
     insmod /system/lib/modules/bthid.ko
