@@ -2964,7 +2964,8 @@ void SecCamera::setExifChangedAttribute()
     //2 0th IFD Exif Private Tags
     //3 Exposure Time
     int shutterSpeed = fimc_v4l2_g_ctrl(m_cam_fd,
-                                            V4L2_CID_CAMERA_GET_SHT_TIME);
+                                            V4L2_CID_CAMERA_EXIF_EXPTIME);
+
     /* TBD - front camera needs to be fixed to support this g_ctrl,
        it current returns a negative err value, so avoid putting
        odd value into exif for now */
@@ -2978,7 +2979,8 @@ void SecCamera::setExifChangedAttribute()
     mExifInfo.exposure_time.den = (uint32_t)(1000000 / shutterSpeed);
 
     //3 ISO Speed Rating
-    int iso = fimc_v4l2_g_ctrl(m_cam_fd, V4L2_CID_CAMERA_GET_ISO);
+    int iso = fimc_v4l2_g_ctrl(m_cam_fd, V4L2_CID_CAMERA_EXIF_ISO);
+
     /* TBD - front camera needs to be fixed to support this g_ctrl,
        it current returns a negative err value, so avoid putting
        odd value into exif for now */
@@ -3026,6 +3028,7 @@ void SecCamera::setExifChangedAttribute()
     //3 Brightness
     mExifInfo.brightness.num = bv*EXIF_DEF_APEX_DEN;
     mExifInfo.brightness.den = EXIF_DEF_APEX_DEN;
+
     //3 Exposure Bias
     if (m_params->scene_mode == SCENE_MODE_BEACH_SNOW) {
         mExifInfo.exposure_bias.num = EXIF_DEF_APEX_DEN;
