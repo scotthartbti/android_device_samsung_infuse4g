@@ -7,7 +7,7 @@ include $(CLEAR_VARS)
 # hw/<COPYPIX_HARDWARE_MODULE_ID>.<ro.product.board>.so
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 
-LOCAL_C_INCLUDES += device/samsung/aries-common/include
+LOCAL_C_INCLUDES += device/samsung/infuse4g/include
 LOCAL_C_INCLUDES += device/samsung/aries-common/libs3cjpeg
 LOCAL_C_INCLUDES += frameworks/native/include/media/hardware
 
