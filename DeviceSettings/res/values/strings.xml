@@ -20,11 +20,13 @@
     <string name="touchscreen_sensitivity_summary_head">Set touch panel sensitivity</string>
     
     <string name="category_sensors_title">Sensors</string>
-    <string name="gyro_subcat_title">Gyroscope</string>
-    <string name="use_gyro_calibration_title_head">Use calibration data</string>
-    <string name="use_gyro_calibration_summary_head">Use the gyroscope calibration values. Do a calibration after checking this!</string>
-    <string name="calibrate_gyro_title_head">Calibrate</string>
-    <string name="calibrate_gyro_summary_head">Put your phone on a flat surface, and press this to calibrate</string>
+    <string name="accelerometer_subcat_title">Accelerometer</string>
+    <string name="use_accelerometer_calibration_title_head">Use calibration data</string>
+    <string name="use_accelerometer_calibration_summary_head">Use the accelerometer calibration values. Do a calibration after checking this!</string>
+    <string name="calibrate_accelerometer_title_head">Calibrate</string>
+    <string name="calibrate_accelerometer_summary_head">Put your phone on a flat surface, and press this to calibrate</string>
+    <string name="accelerometer_dialog_head">Calibration done</string>
+    <string name="accelerometer_dialog_message">The sensor has been successfully calibrated.</string>
     <string name="touchkey_subcat_title">Touch key</string>
     <string name="touchkey_light_title_head">Enable keys backlight</string>
     <string name="touchkey_light_summary_head">Light up touch keys when screen is on</string> 
