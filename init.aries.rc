@@ -302,7 +302,6 @@ on property:ro.debuggable=1
    chmod 0775 /data/log
 
 # Run sysinit
-    exec /system/bin/sysinit
 
     setprop vold.post_fs_data_done 1
 
