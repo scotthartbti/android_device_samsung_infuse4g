@@ -34,6 +34,8 @@ on boot
 on fs
     mkdir /radio 0775 radio radio
     mount yaffs2 mtd@radio /radio
+    # We don't support encryption on yaffs (set before mount_all)
+    setprop ro.crypto.state unsupported
 
 # data
     mount ext4 /dev/block/mmcblk0p2 /data wait nosuid noatime nodiratime noauto_da_alloc
