@@ -12,7 +12,7 @@ check_mount() {
             /tmp/busybox echo "Cannot mount $1."
             exit 1
         fi
-    fi
+fi
 }
 
 set_log() {
@@ -22,13 +22,6 @@ set_log() {
 
 set -x
 export PATH=/:/sbin:/system/xbin:/system/bin:/tmp:$PATH
-
-# check for old/non-cwm recovery.
-   if ! /tmp/busybox test -n "$UPDATE_PACKAGE" ; then
-
-# scrape package location from /tmp/recovery.log
-   UPDATE_PACKAGE=`/tmp/busybox cat /tmp/recovery.log | /tmp/busybox grep 'Update location:' | /tmp/busybox tail -n 1 | /tmp/busybox cut -d ' ' -f 3-`
-   fi
 
 # check if we're running on a bml or mtd device
 if /tmp/busybox test -e /dev/block/bml7 ; then
@@ -54,7 +47,7 @@ if /tmp/busybox test -e /dev/block/bml7 ; then
 
     # write the package path to sdcard cyanogenmod.cfg
     if /tmp/busybox test -n "$UPDATE_PACKAGE" ; then
-        PACKAGE_LOCATION=${UPDATE_PACKAGE#/mnt}
+PACKAGE_LOCATION=${UPDATE_PACKAGE#/mnt}
         /tmp/busybox echo "$PACKAGE_LOCATION" > /mnt/sdcard/cyanogenmod.cfg
     fi
 
@@ -64,7 +57,7 @@ if /tmp/busybox test -e /dev/block/bml7 ; then
     # write new kernel to boot partition
     /tmp/flash_image boot /tmp/boot.img
     if [ "$?" != "0" ] ; then
-        exit 3
+exit 3
     fi
     /tmp/busybox sync
 
@@ -90,7 +83,7 @@ elif /tmp/busybox test -e /dev/block/mtdblock0 ; then
             /tmp/busybox echo "Cannot mount radio partition."
             exit 5
         fi
-    fi
+fi
 
     # if modem.bin doesn't exist on radio partition, format the partition and copy it
     if ! /tmp/busybox test -e /radio/modem.bin ; then
@@ -102,7 +95,7 @@ elif /tmp/busybox test -e /dev/block/mtdblock0 ; then
         else
             /tmp/busybox cp /tmp/modem.bin /radio/modem.bin
         fi
-    fi
+fi
 
     # unmount radio partition
     /tmp/busybox umount -l /dev/block/mtdblock5
@@ -114,8 +107,8 @@ elif /tmp/busybox test -e /dev/block/mtdblock0 ; then
         # flash boot image
         /tmp/bml_over_mtd.sh boot 72 reservoir 2004 /tmp/boot.img
 
-	# unmount system (recovery seems to expect system to be unmounted)
-	/tmp/busybox umount -l /system
+# unmount system (recovery seems to expect system to be unmounted)
+/tmp/busybox umount -l /system
 
         exit 0
     fi
@@ -144,11 +137,11 @@ elif /tmp/busybox test -e /dev/block/mtdblock0 ; then
         /tmp/busybox mkdir -p /efs
 
         if ! /tmp/busybox grep -q /efs /proc/mounts ; then
-            if ! /tmp/busybox mount -t yaffs2 /dev/block/mtdblock4 /efs ; then
+if ! /tmp/busybox mount -t yaffs2 /dev/block/mtdblock4 /efs ; then
                 /tmp/busybox echo "Cannot mount efs."
                 exit 6
             fi
-        fi
+fi
 
         /tmp/busybox cp -R /sdcard/backup/efs /
         /tmp/busybox umount -l /efs
@@ -157,6 +150,7 @@ elif /tmp/busybox test -e /dev/block/mtdblock0 ; then
         exit 7
     fi
 
-    exit 0
+exit 0
 fi
+
 
