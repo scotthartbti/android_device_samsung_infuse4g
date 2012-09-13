@@ -205,7 +205,7 @@
 
     <!-- Timeout in MS for how long you have to long-press the back key to
          kill the foreground app. -->
-    <!-- <integer name="config_backKillTimeout">1500</integer> -->
+    <integer name="config_backKillTimeout">1500</integer>
     <!-- Hardware 'face' keys present on the device, stored as a bit field.
 	This integer should equal the sum of the corresponding value for each
 	of the following keys present:
