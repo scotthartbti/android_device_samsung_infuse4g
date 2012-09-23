@@ -1,7 +1,23 @@
+on property:sys.usb.config=none
+		write /sys/devices/virtual/usb_composite/rndis/enable 0
+		setprop sys.usb.state ${sys.usb.config}
+
 on property:sys.usb.config=mass_storage
-    setprop sys.usb.state ${sys.usb.config}
+		write /sys/devices/virtual/usb_composite/rndis/enable 0
+		setprop sys.usb.state ${sys.usb.config}
+ 
+ on property:sys.usb.config=mass_storage,adb
+		write /sys/devices/virtual/usb_composite/rndis/enable 0
+		start adbd
+		setprop sys.usb.state ${sys.usb.config}
+ 
+on property:sys.usb.config=rndis
+		write /sys/devices/virtual/usb_composite/rndis/enable 1
+		ifup usb0
+		setprop sys.usb.state ${sys.usb.config}
 
-on property:sys.usb.config=mass_storage,adb
-    start adbd
-    setprop sys.usb.state ${sys.usb.config}
-
+on property:sys.usb.config=rndis,adb
+		start adbd
+		write /sys/devices/virtual/usb_composite/rndis/enable 1
+		ifup usb0
+		setprop sys.usb.state ${sys.usb.config}
