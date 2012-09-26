@@ -138,6 +138,12 @@ USE_OPENGL_RENDERER := true
 TARGET_DISABLE_TRIPLE_BUFFERING := false
 BOARD_ALLOW_EGL_HIBERNATION := true
 
+# hwcomposer: custom vsync ioctl
+BOARD_CUSTOM_VSYNC_IOCTL := true
+
+# Suspend in charger to disable capacitive keys
+BOARD_ALLOW_SUSPEND_IN_CHARGER := true
+
 # skia
 BOARD_USE_SKIA_LCDTEXT := true
 
