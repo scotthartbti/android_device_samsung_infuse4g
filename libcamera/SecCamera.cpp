@@ -567,7 +567,6 @@ SecCamera::SecCamera() :
             m_slow_ae(-1),
             m_camera_af_flag(-1),
             m_flag_camera_start(0),
-            m_flag_camera_restart(0),
             m_jpeg_thumbnail_width (0),
             m_jpeg_thumbnail_height(0),
             m_jpeg_quality(100)
@@ -820,7 +819,6 @@ int SecCamera::startPreview(void)
     }
 
     m_flag_camera_start = 1;
-    m_flag_camera_restart = 1;
 
     if (m_camera_id == CAMERA_ID_FRONT) {
         /* Activate preview mode */
@@ -1973,10 +1971,9 @@ int SecCamera::setFlashMode(int flash_mode)
         return -1;
     }
 
-    if ((m_params->flash_mode != flash_mode) || m_flag_camera_restart) {
+    if (m_params->flash_mode != flash_mode) {
         if (m_flag_camera_start) {
             m_params->flash_mode = flash_mode;
-	    m_flag_camera_restart = 0;
             if (fimc_v4l2_s_ctrl(m_cam_fd, V4L2_CID_CAMERA_FLASH_MODE, flash_mode) < 0) {
                 ALOGE("ERR(%s):Fail on V4L2_CID_CAMERA_FLASH_MODE", __func__);
                 return -1;
