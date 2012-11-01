@@ -162,7 +162,7 @@ void CameraHardwareSec::initDefaultParameters(int cameraId)
         p.set(CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES,
               "1280x720,800x480,720x480,640x480,592x480,352x288");
         p.set(CameraParameters::KEY_SUPPORTED_PICTURE_SIZES,
-             "2560x1920,2560x1536,2048x1536,2048x1232,1600x1200,1600x960,800x480,640x480");
+          "3264x2448,3264x1968,2560x1920,2560x1536,2048x1536,2048x1232,1600x1200,1600x960,800x480,640x480");
     } else {
         p.set(CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES,
               "640x480,352x288,320x240,176x144");
