@@ -8,6 +8,6 @@
 /cache		yaffs2		cache
 
 /sdcard		vfat		/dev/block/mmcblk0p1
-/data		ext4		/dev/block/mmcblk0p2
+/data		ext4		/dev/block/mmcblk0p2    length=-16384
 
 /external_sd	vfat		/dev/block/mmcblk1p1
