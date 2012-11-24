@@ -25,6 +25,7 @@ BOARD_USES_LIBSECRIL_STUB := true
 # Use the non-open-source parts, if they're present
 -include vendor/samsung/infuse4g/BoardConfigVendor.mk
 
+TARGET_ARCH := arm
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
