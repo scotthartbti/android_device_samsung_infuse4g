@@ -103,6 +103,7 @@ WIFI_DRIVER_MODULE_ARG           := "firmware_path=/vendor/firmware/bcm4330_sta.
 WIFI_BAND                        := 802_11_ABG
 
 # BT
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/infuse4g/bluetooth
 BOARD_BLUETOOTH_LIBBT_VNDCFG := device/samsung/infuse4g/libbt_vndcfg.txt
 
 # Vold
