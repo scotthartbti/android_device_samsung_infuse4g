@@ -166,7 +166,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # dpi
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.sf.lcd_density=240
+	ro.sf.lcd_density=220
 
 # enable Google-specific location features,
 # like NetworkLocationProvider and LocationCollector
