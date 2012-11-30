@@ -396,7 +396,7 @@ service ste-cg29xx_ctrl /system/vendor/bin/ste-cg29xx_ctrl -b 115200 /dev/s3c241
 #GPS_CHIPSET_STE_CG2900
 service agpsd /system/vendor/bin/agpsd
      class main
-     user gps
+     user root
      group system inet
      oneshot
 
