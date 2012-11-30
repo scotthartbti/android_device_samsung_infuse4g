@@ -207,8 +207,8 @@ PRODUCT_COPY_FILES += \
     device/samsung/infuse4g/updater.sh:updater.sh
 
 # zram
-# PRODUCT_COPY_FILES += \
-#   device/samsung/infuse4g/zram.sh:root/sbin/zram.sh
+PRODUCT_COPY_FILES += \
+   device/samsung/infuse4g/zram.sh:root/sbin/zram.sh
 
 # See comment at the top of this file. This is where the other
 # half of the device-specific product definition file takes care
