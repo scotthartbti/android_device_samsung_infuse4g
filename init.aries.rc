@@ -327,7 +327,7 @@ on property:init.svc.bootanim=running
     start bdaddr
 
 
-service dhcpcd_wlan0 /system/bin/dhcpcd -aABKL
+service dhcpcd_wlan0 /system/bin/dhcpcd -aABDKL
     class main
     disabled
     oneshot
