@@ -54,6 +54,7 @@ PRODUCT_COPY_FILES += \
 	device/samsung/infuse4g/init.aries.usb.rc:root/init.aries.usb.rc \
 	device/samsung/infuse4g/init.aries.usb.rc:recovery/root/usb.rc \
 	device/samsung/infuse4g/ueventd.aries.rc:root/ueventd.aries.rc \
+	device/samsung/infuse4g/fstab.aries:root/fstab.aries \
 	device/samsung/infuse4g/lpm.rc:root/lpm.rc
 
 # Prebuilt kl keymaps
