@@ -297,6 +297,10 @@ on post-fs-data
 on property:ro.debuggable=1
     start adbd
 
+# logs
+   mkdir /data/log 0775 root root
+   chmod 0775 /data/log
+
 # Run sysinit
     exec /system/bin/sysinit
 

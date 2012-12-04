@@ -27,6 +27,10 @@ loglevel 9
     mkdir /tmp
     mkdir /mnt 0775 root root
 
+on fs
+    mount tmpfs tmpfs /tmp
+    mount yaffs2 mtd@system /system
+
 on boot
 # basic network init
     ifup lo
