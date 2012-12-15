@@ -77,7 +77,7 @@ on post-fs
     insmod /system/lib/cifs.ko
 
 # load wifi module
-    insmod /system/lib/modules/bcm4330.ko
+    insmod /system/lib/modules/bcmdhd.ko
 
 # for sensor control
     chown system input /sys/class/input/input0/enable
