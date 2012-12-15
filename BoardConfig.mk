@@ -102,6 +102,7 @@ WIFI_BAND                        := 802_11_ABG
 
 # BT
 BOARD_BLUEDROID_VENDOR_CONF := device/samsung/infuse4g/libbt_vndcfg.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/infuse4g/bluetooth
 
 # Vold
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
