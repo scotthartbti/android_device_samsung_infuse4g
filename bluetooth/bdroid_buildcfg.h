@@ -17,6 +17,6 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#define BTM_DEF_LOCAL_NAME "Samsung Infuse4g"
+#define BTM_DEF_LOCAL_NAME "Samsung SGH-I997"
 
 #endif
