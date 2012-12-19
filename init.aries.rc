@@ -6,6 +6,9 @@ on init
     export EXTERNAL_STORAGE /storage/sdcard0
     export SECONDARY_STORAGE /storage/sdcard1
 
+    # FIXME: Market checks this variable for space-checking, but downloads to /datadata
+    export DOWNLOAD_CACHE /data/download
+
     mkdir /storage/sdcard0 0000 root root
     mkdir /storage/sdcard1 0000 root root
     symlink /storage/sdcard0 /sdcard
@@ -304,6 +307,9 @@ on post-fs-data
 # cheatin
 on property:ro.debuggable=1
     start adbd
+
+# download cache
+    mkdir /data/download 0770 system cache
 
 # logs
    mkdir /data/log 0775 root root
