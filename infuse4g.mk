@@ -164,6 +164,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
        mobiledata.interfaces=pdp0,wlan0,gprs,ppp0 \
        persist.sys.vold.switchexternal=1
 
+# Build kernel with linaro toolchain
+TARGET_KERNEL_CUSTOM_TOOLCHAIN_LINARO := linaro
+
 # dpi
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.sf.lcd_density=240
