@@ -332,7 +332,7 @@ service bdaddr /system/bin/bdaddr_read
     disabled
     oneshot
 
-on property:init.svc.bootanim=running
+on property:ril.bt_macaddr=*
     start bdaddr
 
 
