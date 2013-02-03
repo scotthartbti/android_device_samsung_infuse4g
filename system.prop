@@ -4,7 +4,7 @@
 
 ro.goo.developerid=scotthartbti
 ro.goo.rom=beanstalk
-ro.goo.version=beanstalk1.100
+ro.goo.version=beanstalk1.111
 
 rild.libpath=/system/lib/libsec-ril.so
 rild.libargs=-d /dev/ttyS0
