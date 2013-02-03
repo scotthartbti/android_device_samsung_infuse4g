@@ -102,7 +102,7 @@
 
     <string-array name="config_locationProviderPackageNames" translatable="false">
     <item>com.android.location.fused</item>
-    
+    <!-- The Google Location Services provider -->
     <item>com.google.android.location</item>
     </string-array>
 
