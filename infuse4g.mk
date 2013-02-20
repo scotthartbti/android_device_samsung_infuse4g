@@ -95,8 +95,7 @@ PRODUCT_PACKAGES += \
 	audio.a2dp.default \
 	audio.usb.default \
 	sensors.aries \
-	lights.aries \
-	power.s5pc110
+	lights.aries
 
 PRODUCT_COPY_FILES += \
 	device/samsung/infuse4g/libaudio/audio_policy.conf:system/etc/audio_policy.conf
@@ -208,9 +207,6 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 PRODUCT_COPY_FILES += \
     device/samsung/infuse4g/updater.sh:updater.sh
 
-# zram
-PRODUCT_COPY_FILES += \
-   device/samsung/infuse4g/zram.sh:root/sbin/zram.sh
 
 # See comment at the top of this file. This is where the other
 # half of the device-specific product definition file takes care

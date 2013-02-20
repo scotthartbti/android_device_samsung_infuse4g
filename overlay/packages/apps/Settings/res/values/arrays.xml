@@ -18,7 +18,7 @@
 */
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string-array name="pref_zram_size_entries">
+  <!--  <string-array name="pref_zram_size_entries">
         <item>Disabled</item>
         <item>20%</item>
         <item>35% (default)</item>
@@ -30,5 +30,5 @@
         <item>20</item>
         <item>35</item>
         <item>50</item>
-    </string-array>
+    </string-array>-->
 </resources>
