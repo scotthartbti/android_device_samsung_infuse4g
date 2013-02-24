@@ -95,7 +95,8 @@ PRODUCT_PACKAGES += \
 	audio.a2dp.default \
 	audio.usb.default \
 	sensors.aries \
-	lights.aries
+	lights.aries \
+	power.s5pc110
 
 PRODUCT_COPY_FILES += \
 	device/samsung/infuse4g/libaudio/audio_policy.conf:system/etc/audio_policy.conf
