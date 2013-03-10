@@ -24,4 +24,7 @@
 
 	<!--Show Expanded Desktop preference -->
 	<bool name="config_show_expandedDesktop">true</bool>
+
+	<!--Give us back the volumerockerwake option-->
+	<bool name="config_show_volumeRockerWake">true</bool>
 </resources>
