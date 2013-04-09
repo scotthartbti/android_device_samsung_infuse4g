@@ -46,6 +46,7 @@ public class DeviceSettings extends FragmentActivity {
     public static final String KEY_TOUCHSCREEN_SENSITIVITY = "touchscreen_sensitivity";
     public static final String KEY_TOUCHKEY_LIGHT = "touchkey_light";
     public static final String KEY_USE_DOCK_AUDIO = "dock_audio";
+    public static final String KEY_TOUCHKEY_BLN = "touchkey_bln"; 
 
     ViewPager mViewPager;
     TabsAdapter mTabsAdapter;
@@ -68,10 +69,10 @@ public class DeviceSettings extends FragmentActivity {
                 RadioFragmentActivity.class, null);
         mTabsAdapter.addTab(bar.newTab().setText(R.string.category_mdnie_title),
                 mDNIeFragmentActivity.class, null);
-	/*
+	
         mTabsAdapter.addTab(bar.newTab().setText(R.string.category_sensors_title),
                 SensorsFragmentActivity.class, null);
-	*/
+	
         mTabsAdapter.addTab(bar.newTab().setText(R.string.category_dock_title),
                 DockFragmentActivity.class, null);
 

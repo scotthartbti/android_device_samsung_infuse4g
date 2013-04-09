@@ -37,4 +37,7 @@
     <string name="dockaudio_subcat_title">Dock audio</string>
     <string name="use_dock_audio_title_head">Use dock USB audio</string>
     <string name="use_dock_audio_summary_head">Use the passive audio out on the dock</string>
+
+    <string name="touchkey_bln_title_head">Enable keys notifications</string>
+    <string name="touchkey_bln_summary_head">Light up touch keys when screen is off, and a notification is received</string>
 </resources>
