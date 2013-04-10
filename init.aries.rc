@@ -71,8 +71,6 @@ on fs
     chown system system /sys/class/backlight/s5p_bl/brightness
     chown system system /sys/class/misc/melfas_touchkey/brightness
     chown system system /sys/class/misc/melfas_touchkey/enable_disable
-
-#bln
     chown system system /sys/class/misc/backlightnotification/notification_led
     chown system system /sys/class/misc/backlightnotification/enabled
 
