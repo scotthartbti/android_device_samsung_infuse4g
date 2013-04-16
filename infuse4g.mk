@@ -126,7 +126,8 @@ PRODUCT_PACKAGES += \
 
 # Infuse Settings
 PRODUCT_PACKAGES += \
-	InfuseSettings
+	InfuseSettings \
+	NSTools
 
 # Missed apps
 PRODUCT_PACKAGES += \
