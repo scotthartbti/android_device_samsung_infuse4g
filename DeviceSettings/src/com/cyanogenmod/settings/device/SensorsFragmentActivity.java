@@ -38,6 +38,7 @@ public class SensorsFragmentActivity extends PreferenceFragment {
     private static final String FILE_USE_GYRO_CALIB = "/sys/class/sec/gsensorcal/calibration";
     private static final String FILE_TOUCHKEY_LIGHT = "/data/.disable_touchlight";
     private static final String FILE_TOUCHKEY_TOGGLE = "/sys/class/misc/melfas_touchkey/brightness";
+    private static final String FILE_BLN_TOGGLE = "/sys/class/misc/backlightnotification/enabled";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,8 @@ public class SensorsFragmentActivity extends PreferenceFragment {
         } else if (key.compareTo(DeviceSettings.KEY_TOUCHKEY_LIGHT) == 0) {
             Utils.writeValue(FILE_TOUCHKEY_LIGHT, ((CheckBoxPreference)preference).isChecked() ? "0" : "1");
             Utils.writeValue(FILE_TOUCHKEY_TOGGLE, ((CheckBoxPreference)preference).isChecked() ? "1" : "2");
+        } else if (key.compareTo(DeviceSettings.KEY_TOUCHKEY_BLN) == 0) {
+            Utils.writeValue(FILE_BLN_TOGGLE, ((CheckBoxPreference)preference).isChecked() ? "1" : "0");
         }
 
         return true;
@@ -89,5 +92,6 @@ public class SensorsFragmentActivity extends PreferenceFragment {
 
         Utils.writeValue(FILE_TOUCHKEY_LIGHT, sharedPrefs.getBoolean(DeviceSettings.KEY_TOUCHKEY_LIGHT, true) ? "0" : "1");
         Utils.writeValue(FILE_TOUCHKEY_TOGGLE, sharedPrefs.getBoolean(DeviceSettings.KEY_TOUCHKEY_LIGHT, true) ? "1" : "2");
+	Utils.writeValue(FILE_BLN_TOGGLE, sharedPrefs.getBoolean(DeviceSettings.KEY_TOUCHKEY_BLN, true) ? "1" : "0");
     }
 }
