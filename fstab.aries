@@ -3,5 +3,6 @@
 # The filesystem that contains the filesystem checker binary (typically /system) cannot
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 
-/dev/block/mmcblk0p2         /data               ext4      noatime,nosuid,nodev,errors=panic    wait,encryptable=footer
-
+# LVM Volumes
+/dev/lvpool/system         /system               ext4      ro   wait
+/dev/lvpool/userdata       /data                 ext4      noatime,nodev,nosuid,errors=panic   wait,encryptable=footer
