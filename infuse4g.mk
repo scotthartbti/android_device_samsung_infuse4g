@@ -54,6 +54,7 @@ PRODUCT_COPY_FILES += \
 	device/samsung/infuse4g/init.aries.usb.rc:recovery/root/usb.rc \
 	device/samsung/infuse4g/ueventd.aries.rc:root/ueventd.aries.rc \
 	device/samsung/infuse4g/fstab.aries:root/fstab.aries \
+	device/samsung/aries-common/init.recovery.aries.rc:root/init.recovery.aries.rc \
 	device/samsung/infuse4g/lpm.rc:root/lpm.rc \
 	device/samsung/aries-common/setupdatadata.sh:root/sbin/setupdatadata.sh
 
