@@ -92,9 +92,10 @@ BOARD_HOSTAPD_DRIVER             := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_bcmdhd
 WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/dhd.ko"
 WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/dhd/parameters/firmware_path"
+WIFI_DRIVER_FW_PATH_AP           := "/vendor/firmware/bcm4330_apsta.bin"
 WIFI_DRIVER_FW_PATH_STA          := "/vendor/firmware/bcm4330_sta.bin"
-WIFI_DRIVER_FW_PATH_AP           := "/vendor/firmware/bcm4330_aps.bin"
 WIFI_DRIVER_MODULE_NAME          := "dhd"
+WIFI_BAND                        := 802_11_ABG
 WIFI_DRIVER_MODULE_ARG 		 := "iface_name=wlan0 firmware_path=/system/vendor/firmware/bcm4330_sta.bin nvram_path=/system/vendor/firmware/nvram_net.txt"
 
 # BT
