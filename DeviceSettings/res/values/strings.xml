@@ -37,4 +37,11 @@
     <string name="dockaudio_subcat_title">Dock audio</string>
     <string name="use_dock_audio_title_head">Use dock USB audio</string>
     <string name="use_dock_audio_summary_head">Use the passive audio out on the dock</string>
+
+    <string name="category_vibrator_tuning_title">Vibration</string>
+    <string name="vibrator_tuning_title_head">Vibrator feedback tuning</string>
+    <string name="vibrator_tuning_summary_head">Controls the default power of vibrator feedback</string>
+    <string name="vibrator_title">Vibration %</string>
+    <string name="vibrator_default_title">Default</string>
+    <string name="vibrator_test_title">Test</string>
 </resources>

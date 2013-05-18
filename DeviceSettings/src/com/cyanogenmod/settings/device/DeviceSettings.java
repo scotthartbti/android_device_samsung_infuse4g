@@ -46,6 +46,7 @@ public class DeviceSettings extends FragmentActivity {
     public static final String KEY_TOUCHSCREEN_SENSITIVITY = "touchscreen_sensitivity";
     public static final String KEY_TOUCHKEY_LIGHT = "touchkey_light";
     public static final String KEY_USE_DOCK_AUDIO = "dock_audio";
+    public static final String KEY_VIBRATOR_TUNING = "vibrator_tuning";
 
     ViewPager mViewPager;
     TabsAdapter mTabsAdapter;
@@ -72,6 +73,9 @@ public class DeviceSettings extends FragmentActivity {
         mTabsAdapter.addTab(bar.newTab().setText(R.string.category_sensors_title),
                 SensorsFragmentActivity.class, null);
 
+	mTabsAdapter.addTab(bar.newTab().setText(R.string.category_vibrator_tuning_title),
+                VibratorFragmentActivity.class, null);
+	
         mTabsAdapter.addTab(bar.newTab().setText(R.string.category_dock_title),
                 DockFragmentActivity.class, null);
 
