@@ -32,6 +32,7 @@ public class Startup extends BroadcastReceiver {
         mDNIeOutdoor.restore(context);
         RadioFragmentActivity.restore(context);
         DockFragmentActivity.restore(context);
+	VibratorTuningPreference.restore(context);
     }
 
 }
