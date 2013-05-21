@@ -86,8 +86,6 @@ on post-fs
 
     insmod /system/lib/modules/vibrator.ko
     insmod /system/lib/modules/bthid.ko
-    insmod /system/lib/modules/tun.ko
-    insmod /system/lib/cifs.ko
 
 # disable ipv6 (causes issue when turning off wifi)
     write /proc/sys/net/ipv6/conf/all/disable_ipv6 1
