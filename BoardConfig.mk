@@ -126,9 +126,6 @@ TARGET_SPECIFIC_HEADER_PATH := device/samsung/infuse4g/overlay/include
 # chipset.  Suppress ERASE by recovery and update-binary just to be sure
 BOARD_SUPPRESS_EMMC_WIPE := true
 
-# legacy ts support
-BOARD_USE_LEGACY_TOUCHSCREEN := true
-
 # Hardware rendering
 USE_OPENGL_RENDERER := true
 
