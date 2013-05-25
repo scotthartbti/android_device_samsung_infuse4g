@@ -164,8 +164,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
        wifi.supplicant_scan_interval=120 \
        ro.telephony.ril_class=SamsungExynos3RIL \
        ro.telephony.ril.v3=icccardstatus,datacall,signalstrength,facilitylock \
-       mobiledata.interfaces=pdp0,wlan0,gprs,ppp0 \
-       persist.sys.vold.switchexternal=1
+       mobiledata.interfaces=pdp0,wlan0,gprs,ppp0
 
 # Build kernel with linaro toolchain
 TARGET_KERNEL_CUSTOM_TOOLCHAIN_LINARO := linaro
