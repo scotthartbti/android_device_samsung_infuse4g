@@ -87,9 +87,6 @@ on post-fs
     insmod /system/lib/modules/vibrator.ko
     insmod /system/lib/modules/bthid.ko
 
-# disable ipv6 (causes issue when turning off wifi)
-    write /proc/sys/net/ipv6/conf/all/disable_ipv6 1
-
 # for sensor control
     chown system input /sys/class/input/input0/enable
     chown system input /sys/class/input/input0/delay
