@@ -82,7 +82,6 @@ TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 TARGET_BOOTANIMATION_USE_RGB565 := true
 
 # Wifi
-BOARD_LEGACY_NL80211_STA_EVENTS	 := true
 BOARD_WLAN_DEVICE                := bcmdhd
 BOARD_WLAN_DEVICE_REV            := bcm4330_b1
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
@@ -92,11 +91,13 @@ BOARD_HOSTAPD_DRIVER             := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_bcmdhd
 WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/dhd.ko"
 WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/dhd/parameters/firmware_path"
-WIFI_DRIVER_FW_PATH_AP           := "/vendor/firmware/bcm4330_apsta.bin"
-WIFI_DRIVER_FW_PATH_STA          := "/vendor/firmware/bcm4330_sta.bin"
+WIFI_DRIVER_FW_PATH_STA          := "/system/vendor/firmware/bcm4330_sta.bin"
+WIFI_DRIVER_FW_PATH_AP           := "/system/vendor/firmware/bcm4330_apsta.bin"
 WIFI_DRIVER_MODULE_NAME          := "dhd"
+WIFI_DRIVER_MODULE_ARG           := "firmware_path=/system/vendor/firmware/bcm4330_sta.bin nvram_path=/system/vendor/firmware/nvram_net.txt"
+WIFI_DRIVER_MODULE_AP_ARG        := "firmware_path=/system/vendor/firmware/bcm4330_apsta.bin nvram_path=/system/vendor/firmware/nvram_net.txt"
 WIFI_BAND                        := 802_11_ABG
-WIFI_DRIVER_MODULE_ARG 		 := "iface_name=wlan0 firmware_path=/system/vendor/firmware/bcm4330_sta.bin nvram_path=/system/vendor/firmware/nvram_net.txt"
+BOARD_HAVE_SAMSUNG_WIFI          := true
 
 # BT
 BOARD_BLUEDROID_VENDOR_CONF := device/samsung/infuse4g/libbt_vndcfg.txt
