@@ -112,6 +112,8 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_CUSTOM_BOOTIMG_MK := device/samsung/infuse4g/shbootimg.mk
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/infuse4g/recovery/graphics.c
 BOARD_USES_BML_OVER_MTD := true
+TARGET_RECOVERY_FSTAB := device/samsung/infuse4g/fstab.aries
+RECOVERY_FSTAB_VERSION := 2
 
 # Charging mode
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/charging_mode_booting
