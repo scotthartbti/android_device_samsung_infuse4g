@@ -42,7 +42,6 @@ DEVICE_PACKAGE_OVERLAYS := device/samsung/infuse4g/overlay
 
 # These are the hardware-specific configuration files
 PRODUCT_COPY_FILES := \
-	device/samsung/infuse4g/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
 	device/samsung/infuse4g/prebuilt/lib/egl/egl.cfg:system/lib/egl/egl.cfg \
 	device/samsung/infuse4g/prebuilt/usr/idc/sec_touchscreen.idc:system/usr/idc/sec_touchscreen.idc \
 	device/samsung/infuse4g/prebuilt/usr/idc/melfas_touchkey.idc:system/usr/idc/melfas_touchkey.idc
