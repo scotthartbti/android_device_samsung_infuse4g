@@ -171,10 +171,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
        ro.telephony.ril_class=SamsungExynos3RIL \
        ro.telephony.ril.v3=icccardstatus,datacall,signalstrength,facilitylock \
        mobiledata.interfaces=pdp0,wlan0,gprs,ppp0 \
-       ro.bq.gpu_to_cpu_unsupported=1 \
-
-# Build kernel with linaro toolchain
-TARGET_KERNEL_CUSTOM_TOOLCHAIN_LINARO := linaro
+       ro.bq.gpu_to_cpu_unsupported=1
 
 # dpi
 PRODUCT_PROPERTY_OVERRIDES += \
