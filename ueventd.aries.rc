@@ -1,4 +1,4 @@
-
+/dev/rfkill 		  0666   wifi       wifi
 /dev/pvrsrvkm             0666   system     system
 /dev/video0               0660   system     camera
 /dev/video1               0660   system     camera
