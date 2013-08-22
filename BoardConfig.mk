@@ -96,7 +96,7 @@ WIFI_DRIVER_FW_PATH_AP           := "/vendor/firmware/bcm4330_apsta.bin"
 WIFI_DRIVER_FW_PATH_STA          := "/vendor/firmware/bcm4330_sta.bin"
 WIFI_DRIVER_MODULE_NAME          := "dhd"
 WIFI_BAND                        := 802_11_ABG
-WIFI_DRIVER_MODULE_ARG 		 := "iface_name=wlan0 firmware_path=/system/vendor/firmware/bcm4330_sta.bin nvram_path=/system/vendor/firmware/nvram_net.txt"
+WIFI_DRIVER_MODULE_ARG 		 := "iface_name=wlan0 firmware_path=/vendor/firmware/bcm4330_sta.bin nvram_path=/system/vendor/firmware/nvram_net.txt"
 
 # BT
 BOARD_BLUEDROID_VENDOR_CONF := device/samsung/infuse4g/libbt_vndcfg.txt
