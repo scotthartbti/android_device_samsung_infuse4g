@@ -55,6 +55,9 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/samsung/infuse4g/vibrator/tspdrv.c
 
+# Low Mem Dalvik
+TARGET_ARCH_LOWMEM := true
+
 # Video Devices
 BOARD_V4L2_DEVICE := /dev/video1
 BOARD_CAMERA_DEVICE := /dev/video0
