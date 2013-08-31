@@ -51,6 +51,7 @@ PRODUCT_COPY_FILES += \
 	device/samsung/infuse4g/init.aries.rc:root/init.aries.rc \
 	device/samsung/infuse4g/init.aries.usb.rc:root/init.aries.usb.rc \
 	device/samsung/infuse4g/init.aries.usb.rc:recovery/root/usb.rc \
+	device/samsung/infuse4g/twrp.fstab:recovery/root/etc/twrp.fstab \
 	device/samsung/infuse4g/ueventd.aries.rc:root/ueventd.aries.rc \
 	device/samsung/infuse4g/fstab.aries:root/fstab.aries \
 	device/samsung/aries-common/init.recovery.aries.rc:root/init.recovery.aries.rc \
