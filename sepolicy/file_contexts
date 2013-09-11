@@ -25,10 +25,6 @@
 # GPS
 /dev/s3c2410_serial1                                u:object_r:gps_device:s0
 
-# TV-Out
-/system/bin/tvoutserver                             u:object_r:tvoutserver_exec:s0
-/system/bin/tvouthack                               u:object_r:tvouthack_exec:s0
-
 # Bluetooth
 /system/bin/bdaddr_read                             u:object_r:bdaddr_read_exec:s0
 
