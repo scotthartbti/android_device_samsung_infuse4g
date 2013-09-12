@@ -151,6 +151,8 @@ BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_USE_SKIA_LCDTEXT := true
 
 # SELinux
+POLICYVERS := 24
+
 BOARD_SEPOLICY_DIRS += \
     device/samsung/infuse4g/sepolicy
 
