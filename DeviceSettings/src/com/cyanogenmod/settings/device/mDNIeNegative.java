@@ -48,7 +48,7 @@ public class mDNIeNegative extends ListPreference implements OnPreferenceChangeL
         }
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-        Utils.writeValue(FILE, sharedPrefs.getString(DeviceSettings.KEY_MDNIE_NEGATIVE, "0"));
+        Utils.writeValue(FILE, sharedPrefs.getString(DisplaySettings.KEY_MDNIE_NEGATIVE, "0"));
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {

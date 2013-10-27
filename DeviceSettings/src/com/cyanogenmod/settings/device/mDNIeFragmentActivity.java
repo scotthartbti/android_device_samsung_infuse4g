@@ -37,25 +37,25 @@ public class mDNIeFragmentActivity extends PreferenceFragment {
 
         addPreferencesFromResource(R.xml.mdnie_preferences);
 
-        mmDNIeScenario = (mDNIeScenario) findPreference(DeviceSettings.KEY_MDNIE_SCENARIO);
+        mmDNIeScenario = (mDNIeScenario) findPreference(DisplaySettings.KEY_MDNIE_SCENARIO);
         mmDNIeScenario.setEnabled(mDNIeScenario.isSupported());
 
 	/*
-        mmDNIeMode = (mDNIeMode) findPreference(DeviceSettings.KEY_MDNIE_MODE);
+        mmDNIeMode = (mDNIeMode) findPreference(DisplaySettings.KEY_MDNIE_MODE);
         mmDNIeMode.setEnabled(mDNIeMode.isSupported());
 
-        mmDNIeNegative = (mDNIeNegative) findPreference(DeviceSettings.KEY_MDNIE_NEGATIVE);
+        mmDNIeNegative = (mDNIeNegative) findPreference(DisplaySettings.KEY_MDNIE_NEGATIVE);
         mmDNIeNegative.setEnabled(mDNIeNegative.isSupported());
 	*/
 
-        mmDNIeOutdoor = (mDNIeOutdoor) findPreference(DeviceSettings.KEY_MDNIE_OUTDOOR);
+        mmDNIeOutdoor = (mDNIeOutdoor) findPreference(DisplaySettings.KEY_MDNIE_OUTDOOR);
         mmDNIeOutdoor.setEnabled(mDNIeOutdoor.isSupported());
 
-        mPanelGamma = (PanelGamma) findPreference(DeviceSettings.KEY_PANEL_GAMMA);
+        mPanelGamma = (PanelGamma) findPreference(DisplaySettings.KEY_PANEL_GAMMA);
         mPanelGamma.setEnabled(mPanelGamma.isSupported());
 
 	/*
-        mTouchscreenSensitivity = (TouchscreenSensitivity) findPreference(DeviceSettings.KEY_TOUCHSCREEN_SENSITIVITY);
+        mTouchscreenSensitivity = (TouchscreenSensitivity) findPreference(DisplaySettings.KEY_TOUCHSCREEN_SENSITIVITY);
         mTouchscreenSensitivity.setEnabled(mTouchscreenSensitivity.isSupported());
 	*/
     }

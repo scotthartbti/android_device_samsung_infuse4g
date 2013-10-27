@@ -171,6 +171,9 @@ BOARD_SEPOLICY_UNION += \
     pvrsrvinit.te \
     rild.te
 
+# Hardware tunables
+BOARD_HARDWARE_CLASS := device/samsung/infuse4g/cmhw/
+
 # Include aries specific stuff
 -include device/samsung/aries-common/Android.mk
 

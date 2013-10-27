@@ -47,7 +47,7 @@ public class mDNIeOutdoor extends ListPreference implements OnPreferenceChangeLi
         }
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-        Utils.writeValue(FILE, sharedPrefs.getString(DeviceSettings.KEY_MDNIE_OUTDOOR, "0"));
+        Utils.writeValue(FILE, sharedPrefs.getString(DisplaySettings.KEY_MDNIE_OUTDOOR, "0"));
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {

@@ -31,7 +31,7 @@ import com.cyanogenmod.settings.device.R;
 
 import java.util.ArrayList;
 
-public class DeviceSettings extends FragmentActivity {
+public class DisplaySettings extends FragmentActivity {
 
     public static final String SHARED_PREFERENCES_BASENAME = "com.cyanogenmod.settings.device";
     public static final String ACTION_UPDATE_PREFERENCES = "com.cyanogenmod.settings.device.UPDATE";
@@ -40,13 +40,6 @@ public class DeviceSettings extends FragmentActivity {
     public static final String KEY_MDNIE_NEGATIVE = "mdnie_negative";
     public static final String KEY_MDNIE_OUTDOOR = "mdnie_outdoor";
     public static final String KEY_PANEL_GAMMA = "panel_gamma";
-    public static final String KEY_HSPA = "hspa";
-    public static final String KEY_USE_GYRO_CALIBRATION = "use_gyro_calibration";
-    public static final String KEY_CALIBRATE_GYRO = "calibrate_gyro";
-    public static final String KEY_TOUCHSCREEN_SENSITIVITY = "touchscreen_sensitivity";
-    public static final String KEY_TOUCHKEY_LIGHT = "touchkey_light";
-    public static final String KEY_USE_DOCK_AUDIO = "dock_audio";
-    public static final String KEY_VIBRATOR_TUNING = "vibrator_tuning";
 
     ViewPager mViewPager;
     TabsAdapter mTabsAdapter;
@@ -65,19 +58,8 @@ public class DeviceSettings extends FragmentActivity {
         bar.setTitle(R.string.app_name);
 
         mTabsAdapter = new TabsAdapter(this, mViewPager);
-        mTabsAdapter.addTab(bar.newTab().setText(R.string.category_radio_title),
-                RadioFragmentActivity.class, null);
         mTabsAdapter.addTab(bar.newTab().setText(R.string.category_mdnie_title),
                 mDNIeFragmentActivity.class, null);
-
-        mTabsAdapter.addTab(bar.newTab().setText(R.string.category_sensors_title),
-                SensorsFragmentActivity.class, null);
-
-	mTabsAdapter.addTab(bar.newTab().setText(R.string.category_vibrator_tuning_title),
-                VibratorFragmentActivity.class, null);
-	
-        mTabsAdapter.addTab(bar.newTab().setText(R.string.category_dock_title),
-                DockFragmentActivity.class, null);
 
         if (savedInstanceState != null) {
             bar.setSelectedNavigationItem(savedInstanceState.getInt("tab", 0));

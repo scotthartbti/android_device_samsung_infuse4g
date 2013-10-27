@@ -48,7 +48,7 @@ public class PanelGamma extends ListPreference implements OnPreferenceChangeList
         }
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-        Utils.writeValue(FILE, sharedPrefs.getString(DeviceSettings.KEY_PANEL_GAMMA, "0"));
+        Utils.writeValue(FILE, sharedPrefs.getString(DisplaySettings.KEY_PANEL_GAMMA, "0"));
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
