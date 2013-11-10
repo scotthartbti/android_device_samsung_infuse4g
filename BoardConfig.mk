@@ -159,11 +159,8 @@ BOARD_SEPOLICY_DIRS += \
 BOARD_SEPOLICY_UNION += \
     bdaddr_read.te \
     device.te \
-    domain.te \
     file_contexts \
-    geomagneticd.te \
     mediaserver.te \
-    orientationd.te \
     property_contexts \
     pvrsrvinit.te \
     rild.te

@@ -448,7 +448,9 @@ on property:sys.boot_completed=1
     start szram
 
 service wpa_supplicant /system/bin/wpa_supplicant \
-    -Dnl80211 -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf -e/data/misc/wifi/entropy.bin
+    -O/data/misc/wifi/sockets \
+    -Dnl80211 -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf -e/data/misc/wifi/entropy.bin \
+    -g@android:wpa_wlan0
 # we will start as root and wpa_supplicant will switch to user wifi
 # after setting up the capabilities required for WEXT
 # user wifi
