@@ -214,4 +214,9 @@
  
     <!-- Disable lockscreen translucent decor by default -->
     <bool name="config_enableLockScreenTranslucentDecor">true</bool>
+
+    <!-- Device configuration setting the /proc/sys/vm/extra_free_kbytes tunable
+         in the kernel. Default is 3 full-screen 32 bpp buffers, i.e. 4500KB
+         on Nexus S. Let's double this value. -->
+    <integer name="config_extraFreeKbytesAbsolute">9000</integer>
 </resources>
