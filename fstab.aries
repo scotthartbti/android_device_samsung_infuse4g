@@ -14,4 +14,4 @@ datadata                    /datadata           yaffs2      defaults            
 /dev/lvpool/userdata       /data                 ext4      noatime,nodev,nosuid,errors=panic   wait,encryptable=footer,length=-16384
 
 /devices/platform/s3c-sdhci.0/mmc_host/mmc0 auto auto defaults voldmanaged=sdcard0:1,nonremovable,noemulatedsd
-/devices/platform/s3c-sdhci.2/mmc_host/mmc1 auto auto defaults voldmanaged=sdcard1:auto,noemulatedsd
+/devices/platform/s3c-sdhci.2/mmc_host/mmc1 auto auto defaults voldmanaged=sdcard1:auto

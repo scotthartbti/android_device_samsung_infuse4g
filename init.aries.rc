@@ -46,6 +46,7 @@ on fs
     mkdir /radio 0775 radio radio
     mount yaffs2 mtd@radio /radio
     mount yaffs2 mtd@datadata /datadata
+    mount yaffs2 mtd@cache /cache
     mount_all fstab.aries
 
     chown radio radio /radio/modem.bin

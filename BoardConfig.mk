@@ -135,6 +135,9 @@ BOARD_SUPPRESS_EMMC_WIPE := true
 # Hardware rendering
 USE_OPENGL_RENDERER := true
 
+# OpenGL workaround
+BOARD_EGL_WORKAROUND_BUG_10194508 := true
+
 # TARGET_DISABLE_TRIPLE_BUFFERING can be used to disable triple buffering
 # on per target basis. On crespo it is possible to do so in theory
 # to save memory, however, there are currently some limitations in the
@@ -162,7 +165,6 @@ BOARD_SEPOLICY_UNION += \
     bdaddr_read.te \
     device.te \
     file_contexts \
-    mediaserver.te \
     property_contexts \
     pvrsrvinit.te \
     rild.te
