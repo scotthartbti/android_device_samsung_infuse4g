@@ -2,10 +2,6 @@
 # system.prop for smdkc110
 #
 
-ro.goo.developerid=scotthartbti
-ro.goo.rom=unofficialcm10
-ro.goo.version=unofficialcm10.108121
-
 rild.libpath=/system/lib/libsec-ril.so
 rild.libargs=-d/dev/ttyS0
 ro.ril.def.agps.mode = 2
