@@ -172,8 +172,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
        ro.telephony.ril_class=SamsungExynos3RIL \
        ro.telephony.ril.v3=icccardstatus,datacall,signalstrength,facilitylock \
        mobiledata.interfaces=pdp0,wlan0,gprs,ppp0 \
-       ro.bq.gpu_to_cpu_unsupported=1 \
-       ro.zram.default=20
+       ro.bq.gpu_to_cpu_unsupported=1
 
 # dpi
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -216,10 +215,6 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_COPY_FILES += \
     device/samsung/infuse4g/updater.sh:updater.sh
-
-# zram
-PRODUCT_COPY_FILES += \
-   device/samsung/infuse4g/zram.sh:root/sbin/zram.sh
 
 # See comment at the top of this file. This is where the other
 # half of the device-specific product definition file takes care
