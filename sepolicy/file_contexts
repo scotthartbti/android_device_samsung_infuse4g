@@ -26,3 +26,6 @@
 /sys/class/mdnieset_ui/switch_mdnieset_ui/mdnieset_ui_file_cmd  u:object_r:sysfs_writable:s0
 /sys/class/misc/dockaudio/(.*)_enable               u:object_r:sysfs_writable:s0
 /sys/devices/virtual/misc/voodoo_sound/(.*)         u:object_r:sysfs_writable:s0
+
+# LVM
+/dev/mapper/lvpool-(.*)                             u:object_r:block_device:s0
