@@ -172,8 +172,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
        ro.telephony.ril_class=SamsungExynos3RIL \
        ro.telephony.ril.v3=icccardstatus,datacall,signalstrength,facilitylock \
        mobiledata.interfaces=pdp0,wlan0,gprs,ppp0 \
-       ro.bq.gpu_to_cpu_unsupported=1 \
-       ro.ksm.default=1
+       ro.bq.gpu_to_cpu_unsupported=1
 
 # dpi
 PRODUCT_PROPERTY_OVERRIDES += \
