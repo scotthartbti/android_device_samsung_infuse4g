@@ -19,7 +19,6 @@ on init
     symlink /storage/sdcard1 /emmc
     symlink /storage/sdcard1 /mnt/emmc
     # FIXME: Remove emmc?
-    mkdir /datadata 0771 system system
     mkdir /data 0771 system system
 
 on boot
@@ -47,7 +46,6 @@ on fs
 
     mkdir /radio 0775 radio radio
     mount yaffs2 mtd@radio /radio
-    mount yaffs2 mtd@datadata /datadata
     mount yaffs2 mtd@cache /cache
     mount_all fstab.aries
     swapon_all fstab.aries
@@ -157,9 +155,6 @@ on fs
     restorecon /sys/devices/virtual/misc/voodoo_sound/stereo_expansion_gain
 
 on post-fs
-    chown system system /datadata
-    chmod 0771 /datadata
-    restorecon /datadata
 
     #symlinks for samsung RIL
     symlink /radio/modem.bin /dev/block/bml12
@@ -383,8 +378,6 @@ on post-fs-data
 # for migrating download provider's cache out of the small /data/data
     mkdir /data/data2 0771 system system
 
-    # setup datadata
-    exec /sbin/setupdatadata.sh
 
 # wi-fi
     mkdir /data/wifi 0771 wifi wifi
